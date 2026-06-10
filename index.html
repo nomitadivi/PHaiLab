@@ -28,856 +28,196 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--cream);
-    color: var(--text-dark);
-    line-height: 1.65;
-  }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.65; }
 
   /* ── NAV ── */
-  nav {
-    background: var(--green-dark);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-  }
-
-  .nav-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-    height: 60px;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .nav-brand {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 1.05rem;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: -0.3px;
-    white-space: nowrap;
-  }
-
+  nav { background: var(--green-dark); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+  .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 60px; flex-wrap: wrap; gap: 8px; }
+  .nav-brand { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.05rem; color: #fff; text-decoration: none; letter-spacing: -0.3px; white-space: nowrap; }
   .nav-brand span { color: var(--green-light); }
-
-  .nav-links {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-
-  .nav-links a {
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 500;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background 0.2s, color 0.2s;
-    white-space: nowrap;
-  }
-
+  .nav-links { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.82rem; font-weight: 500; padding: 5px 10px; border-radius: 5px; transition: background 0.2s, color 0.2s; white-space: nowrap; }
   .nav-links a:hover { background: rgba(255,255,255,0.15); color: #fff; }
   .nav-links a.kids-link { color: #ffd166; }
   .nav-links a.kids-link:hover { background: rgba(255,209,102,0.2); color: #ffd166; }
 
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(135deg, var(--green-dark) 0%, #0d3d22 100%);
-    color: #fff;
-    padding: 64px 24px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 380px; height: 380px;
-    border-radius: 50%;
-    background: rgba(74,184,114,0.10);
-    pointer-events: none;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: -40px;
-    width: 280px; height: 280px;
-    border-radius: 50%;
-    background: rgba(232,160,32,0.08);
-    pointer-events: none;
-  }
-
-  .hero-inner {
-    max-width: 780px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-eyebrow {
-    display: inline-block;
-    background: rgba(74,184,114,0.25);
-    border: 1px solid rgba(74,184,114,0.4);
-    color: var(--green-light);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-  }
-
-  .hero h1 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    line-height: 1.15;
-    letter-spacing: -1px;
-    margin-bottom: 20px;
-  }
-
-  .hero h1 em {
-    font-style: normal;
-    color: var(--green-light);
-  }
-
-  .hero-sub {
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.82);
-    max-width: 600px;
-    margin-bottom: 36px;
-    line-height: 1.7;
-  }
-
-  .hero-ctas {
+  /* Language toggle button */
+  .lang-toggle {
     display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
   }
-
-  .btn-primary {
-    background: var(--amber);
-    color: var(--text-dark);
-    padding: 13px 26px;
-    border-radius: 8px;
+  .lang-toggle .lang-opt {
+    padding: 5px 13px;
+    font-size: 0.78rem;
     font-weight: 700;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    color: rgba(255,255,255,0.6);
+    transition: background 0.2s, color 0.2s;
+    user-select: none;
+    letter-spacing: 0.5px;
   }
+  .lang-toggle .lang-opt.active { background: var(--amber); color: var(--text-dark); }
+  .lang-toggle .lang-divider { width: 1px; background: rgba(255,255,255,0.25); height: 24px; }
 
+  /* ── HERO ── */
+  .hero { background: linear-gradient(135deg, var(--green-dark) 0%, #0d3d22 100%); color: #fff; padding: 64px 24px 80px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 380px; height: 380px; border-radius: 50%; background: rgba(74,184,114,0.10); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 280px; height: 280px; border-radius: 50%; background: rgba(232,160,32,0.08); pointer-events: none; }
+  .hero-inner { max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-eyebrow { display: inline-block; background: rgba(74,184,114,0.25); border: 1px solid rgba(74,184,114,0.4); color: var(--green-light); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; letter-spacing: -1px; margin-bottom: 20px; }
+  .hero h1 em { font-style: normal; color: var(--green-light); }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.82); max-width: 600px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary { background: var(--amber); color: var(--text-dark); padding: 13px 26px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-flex; align-items: center; gap: 6px; }
   .btn-primary:hover { background: #f0ad24; transform: translateY(-1px); }
-
-  .btn-outline {
-    border: 2px solid rgba(255,255,255,0.5);
-    color: #fff;
-    padding: 11px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: border-color 0.2s, background 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-
+  .btn-outline { border: 2px solid rgba(255,255,255,0.5); color: #fff; padding: 11px 24px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: border-color 0.2s, background 0.2s; display: inline-flex; align-items: center; gap: 6px; }
   .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
 
-  /* ── ALERT BANNER ── */
-  .alert-banner {
-    background: #fff3cd;
-    border-bottom: 3px solid var(--amber);
-    padding: 14px 24px;
-  }
-
-  .alert-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
+  /* ── ALERT ── */
+  .alert-banner { background: #fff3cd; border-bottom: 3px solid var(--amber); padding: 14px 24px; }
+  .alert-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; gap: 12px; }
   .alert-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
-
-  .alert-text {
-    font-size: 0.9rem;
-    color: #7a4a00;
-  }
-
+  .alert-text { font-size: 0.9rem; color: #7a4a00; }
   .alert-text strong { font-weight: 700; }
-
   .alert-text a { color: #7a4a00; font-weight: 600; }
 
   /* ── SECTIONS ── */
-  .section {
-    padding: 72px 24px;
-  }
-
+  .section { padding: 72px 24px; }
   .section-alt { background: #fff; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-header { margin-bottom: 44px; }
+  .section-eyebrow { display: inline-block; color: var(--green-mid); font-size: 0.72rem; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; margin-bottom: 10px; }
+  .section h2 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--text-dark); line-height: 1.2; letter-spacing: -0.5px; }
+  .section-desc { margin-top: 12px; color: var(--text-mid); font-size: 1rem; max-width: 640px; }
 
-  .section-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-header {
-    margin-bottom: 44px;
-  }
-
-  .section-eyebrow {
-    display: inline-block;
-    color: var(--green-mid);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .section h2 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    color: var(--text-dark);
-    line-height: 1.2;
-    letter-spacing: -0.5px;
-  }
-
-  .section-desc {
-    margin-top: 12px;
-    color: var(--text-mid);
-    font-size: 1rem;
-    max-width: 640px;
-  }
-
-  /* ── WHAT IS GRID ── */
-  .basics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-  }
-
-  .basics-card {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px;
-  }
-
-  .basics-card .card-icon {
-    font-size: 2rem;
-    margin-bottom: 14px;
-  }
-
-  .basics-card h3 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    font-size: 1.05rem;
-    color: var(--green-dark);
-    margin-bottom: 10px;
-  }
-
-  .basics-card p {
-    font-size: 0.92rem;
-    color: var(--text-mid);
-    line-height: 1.7;
-  }
+  /* ── BASICS GRID ── */
+  .basics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+  .basics-card { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+  .basics-card .card-icon { font-size: 2rem; margin-bottom: 14px; }
+  .basics-card h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--green-dark); margin-bottom: 10px; }
+  .basics-card p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.7; }
 
   /* ── LIFECYCLE ── */
-  .lifecycle-steps {
-    display: flex;
-    gap: 0;
-    position: relative;
-    flex-wrap: wrap;
-  }
-
-  .lifecycle-step {
-    flex: 1;
-    min-width: 180px;
-    text-align: center;
-    padding: 28px 20px;
-    position: relative;
-  }
-
-  .lifecycle-step::after {
-    content: '→';
-    position: absolute;
-    right: -14px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.3rem;
-    color: var(--green-light);
-    font-weight: 700;
-  }
-
+  .lifecycle-steps { display: flex; gap: 0; position: relative; flex-wrap: wrap; }
+  .lifecycle-step { flex: 1; min-width: 180px; text-align: center; padding: 28px 20px; position: relative; }
+  .lifecycle-step::after { content: '→'; position: absolute; right: -14px; top: 50%; transform: translateY(-50%); font-size: 1.3rem; color: var(--green-light); font-weight: 700; }
   .lifecycle-step:last-child::after { display: none; }
+  .step-num { width: 52px; height: 52px; border-radius: 50%; background: var(--green-dark); color: #fff; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+  .lifecycle-step h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--green-dark); margin-bottom: 8px; }
+  .lifecycle-step p { font-size: 0.85rem; color: var(--text-mid); }
 
-  .step-num {
-    width: 52px; height: 52px;
-    border-radius: 50%;
-    background: var(--green-dark);
-    color: #fff;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 14px;
-  }
-
-  .lifecycle-step h4 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    font-size: 0.95rem;
-    color: var(--green-dark);
-    margin-bottom: 8px;
-  }
-
-  .lifecycle-step p {
-    font-size: 0.85rem;
-    color: var(--text-mid);
-  }
-
-  /* ── SYMPTOMS ── */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-
+  /* ── TWO COL ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
   @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
-
-  .symptom-list {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px;
-  }
-
-  .symptom-list h3 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    font-size: 1.05rem;
-    color: var(--green-dark);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
+  .symptom-list { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+  .symptom-list h3 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--green-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
   .symptom-list ul { list-style: none; }
-
-  .symptom-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 0.9rem;
-    color: var(--text-mid);
-  }
-
+  .symptom-list li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; color: var(--text-mid); }
   .symptom-list li:last-child { border-bottom: none; }
-
-  .symptom-list li::before {
-    content: '•';
-    color: var(--green-mid);
-    font-size: 1.2rem;
-    line-height: 1.3;
-    flex-shrink: 0;
-  }
+  .symptom-list li::before { content: '•'; color: var(--green-mid); font-size: 1.2rem; line-height: 1.3; flex-shrink: 0; }
 
   /* ── PREVENTION ── */
-  .prevention-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
-
-  .prev-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--green-mid);
-    border-radius: 0 10px 10px 0;
-    padding: 22px 22px 22px 20px;
-  }
-
+  .prevention-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+  .prev-card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--green-mid); border-radius: 0 10px 10px 0; padding: 22px 22px 22px 20px; }
   .prev-card .icon { font-size: 1.5rem; margin-bottom: 10px; }
-
-  .prev-card h4 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    font-size: 0.95rem;
-    color: var(--green-dark);
-    margin-bottom: 8px;
-  }
-
+  .prev-card h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--green-dark); margin-bottom: 8px; }
   .prev-card p { font-size: 0.87rem; color: var(--text-mid); line-height: 1.6; }
 
-  /* ── LIVESTOCK SECTION ── */
-  .livestock-section {
-    background: linear-gradient(135deg, #0d3d22 0%, #1a5c35 100%);
-    color: #fff;
-    padding: 72px 24px;
-  }
-
+  /* ── LIVESTOCK ── */
+  .livestock-section { background: linear-gradient(135deg, #0d3d22 0%, #1a5c35 100%); color: #fff; padding: 72px 24px; }
   .livestock-inner { max-width: 1100px; margin: 0 auto; }
-
   .livestock-section .section-eyebrow { color: var(--green-light); }
-
-  .livestock-section h2 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    color: #fff;
-    margin-bottom: 12px;
-    letter-spacing: -0.5px;
-  }
-
+  .livestock-section h2 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.6rem, 3vw, 2.2rem); color: #fff; margin-bottom: 12px; letter-spacing: -0.5px; }
   .livestock-desc { color: rgba(255,255,255,0.8); margin-bottom: 40px; font-size: 1rem; max-width: 640px; }
-
-  .livestock-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    margin-bottom: 40px;
-  }
-
-  .livestock-card {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 12px;
-    padding: 26px;
-  }
-
+  .livestock-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
+  .livestock-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 26px; }
   .livestock-card .icon { font-size: 1.8rem; margin-bottom: 12px; }
-
-  .livestock-card h4 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    font-size: 1rem;
-    color: var(--green-light);
-    margin-bottom: 8px;
-  }
-
+  .livestock-card h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem; color: var(--green-light); margin-bottom: 8px; }
   .livestock-card p { font-size: 0.88rem; color: rgba(255,255,255,0.78); line-height: 1.65; }
-
-  .report-box {
-    background: var(--amber);
-    border-radius: 12px;
-    padding: 28px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .report-box-text h3 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 1.2rem;
-    color: var(--text-dark);
-    margin-bottom: 6px;
-  }
-
+  .report-box { background: var(--amber); border-radius: 12px; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .report-box-text h3 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.2rem; color: var(--text-dark); margin-bottom: 6px; }
   .report-box-text p { font-size: 0.88rem; color: #5a3800; }
-
-  .btn-report {
-    background: var(--green-dark);
-    color: #fff;
-    padding: 13px 26px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: background 0.2s;
-  }
-
+  .btn-report { background: var(--green-dark); color: #fff; padding: 13px 26px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
   .btn-report:hover { background: #0d3d22; }
 
-  /* ── KIDS SECTION ── */
-  .kids-section {
-    background: linear-gradient(160deg, #fdf6ff 0%, #fff5f0 50%, #f0fdf9 100%);
-    padding: 72px 24px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .kids-section::before {
-    content: '🐄🐑🐴🐕🦌';
-    position: absolute;
-    top: 20px; right: 20px;
-    font-size: 2.5rem;
-    letter-spacing: 6px;
-    opacity: 0.15;
-  }
-
-  .kids-header {
-    text-align: center;
-    margin-bottom: 48px;
-  }
-
-  .kids-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--kids-purple);
-    color: #fff;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    font-size: 0.85rem;
-    padding: 6px 16px;
-    border-radius: 30px;
-    margin-bottom: 14px;
-    letter-spacing: 0.5px;
-  }
-
-  .kids-header h2 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    color: var(--kids-purple);
-    letter-spacing: -0.5px;
-    margin-bottom: 10px;
-  }
-
-  .kids-header p {
-    color: var(--text-mid);
-    font-size: 1rem;
-    max-width: 560px;
-    margin: 0 auto;
-  }
-
-  .kids-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
-    max-width: 1100px;
-    margin: 0 auto 48px;
-  }
-
-  .kids-card {
-    border-radius: 16px;
-    padding: 28px 24px;
-    position: relative;
-    overflow: hidden;
-  }
-
+  /* ── KIDS ── */
+  .kids-section { background: linear-gradient(160deg, #fdf6ff 0%, #fff5f0 50%, #f0fdf9 100%); padding: 72px 24px; position: relative; overflow: hidden; }
+  .kids-section::before { content: '🐄🐑🐴🐕🦌'; position: absolute; top: 20px; right: 20px; font-size: 2.5rem; letter-spacing: 6px; opacity: 0.15; }
+  .kids-header { text-align: center; margin-bottom: 48px; }
+  .kids-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--kids-purple); color: #fff; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.85rem; padding: 6px 16px; border-radius: 30px; margin-bottom: 14px; letter-spacing: 0.5px; }
+  .kids-header h2 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--kids-purple); letter-spacing: -0.5px; margin-bottom: 10px; }
+  .kids-header p { color: var(--text-mid); font-size: 1rem; max-width: 560px; margin: 0 auto; }
+  .kids-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto 48px; }
+  .kids-card { border-radius: 16px; padding: 28px 24px; position: relative; overflow: hidden; }
   .kids-card.purple { background: #f5eeff; border: 2px solid #d4b8f7; }
   .kids-card.orange { background: #fff4e8; border: 2px solid #ffd4a0; }
   .kids-card.teal   { background: #e6faf8; border: 2px solid #99e0d8; }
   .kids-card.pink   { background: #fff0f7; border: 2px solid #ffb8df; }
-
   .kids-card .kid-icon { font-size: 2.6rem; margin-bottom: 12px; display: block; }
-
-  .kids-card h3 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 1.05rem;
-    margin-bottom: 10px;
-  }
-
+  .kids-card h3 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.05rem; margin-bottom: 10px; }
   .kids-card.purple h3 { color: var(--kids-purple); }
   .kids-card.orange h3 { color: #b85a00; }
   .kids-card.teal h3   { color: var(--kids-teal); }
   .kids-card.pink h3   { color: var(--kids-pink); }
-
   .kids-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.65; }
-
-  /* Fun fact box */
-  .fun-fact-box {
-    background: linear-gradient(135deg, #7c4daa 0%, #5b3680 100%);
-    border-radius: 16px;
-    padding: 32px 36px;
-    color: #fff;
-    max-width: 700px;
-    margin: 0 auto 36px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .fun-fact-box::before {
-    content: '⭐';
-    position: absolute;
-    top: 10px; left: 16px;
-    font-size: 2rem;
-    opacity: 0.4;
-  }
-
-  .fun-fact-box::after {
-    content: '⭐';
-    position: absolute;
-    bottom: 10px; right: 16px;
-    font-size: 2rem;
-    opacity: 0.4;
-  }
-
-  .fun-fact-box h3 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    color: #ffd166;
-  }
-
+  .fun-fact-box { background: linear-gradient(135deg, #7c4daa 0%, #5b3680 100%); border-radius: 16px; padding: 32px 36px; color: #fff; max-width: 700px; margin: 0 auto 36px; text-align: center; position: relative; overflow: hidden; }
+  .fun-fact-box::before { content: '⭐'; position: absolute; top: 10px; left: 16px; font-size: 2rem; opacity: 0.4; }
+  .fun-fact-box::after { content: '⭐'; position: absolute; bottom: 10px; right: 16px; font-size: 2rem; opacity: 0.4; }
+  .fun-fact-box h3 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.1rem; margin-bottom: 10px; color: #ffd166; }
   .fun-fact-box p { font-size: 0.95rem; color: rgba(255,255,255,0.9); line-height: 1.7; }
-
-  /* Kids quiz-style callout */
-  .kids-tips {
-    background: #fff;
-    border-radius: 16px;
-    border: 2px solid #ffd166;
-    padding: 28px 32px;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .kids-tips h3 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 1.1rem;
-    color: var(--kids-orange);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
+  .kids-tips { background: #fff; border-radius: 16px; border: 2px solid #ffd166; padding: 28px 32px; max-width: 700px; margin: 0 auto; }
+  .kids-tips h3 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--kids-orange); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
   .kids-tips ul { list-style: none; }
-
-  .kids-tips li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 8px 0;
-    font-size: 0.92rem;
-    color: var(--text-mid);
-    border-bottom: 1px dashed #ffe8a0;
-  }
-
+  .kids-tips li { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; font-size: 0.92rem; color: var(--text-mid); border-bottom: 1px dashed #ffe8a0; }
   .kids-tips li:last-child { border-bottom: none; }
-
   .kids-tips .tip-emoji { font-size: 1.2rem; flex-shrink: 0; }
 
   /* ── FAQ ── */
   .faq-list { max-width: 760px; }
-
-  .faq-item {
-    border-bottom: 1px solid var(--border);
-    padding: 20px 0;
-  }
-
-  .faq-q {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    font-size: 1rem;
-    color: var(--green-dark);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-    user-select: none;
-  }
-
-  .faq-q .toggle {
-    flex-shrink: 0;
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    background: var(--green-light);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    line-height: 1;
-    transition: transform 0.25s, background 0.2s;
-    margin-top: 2px;
-  }
-
-  .faq-item.open .faq-q .toggle {
-    transform: rotate(45deg);
-    background: var(--green-dark);
-  }
-
-  .faq-a {
-    font-size: 0.92rem;
-    color: var(--text-mid);
-    line-height: 1.7;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease, padding 0.2s;
-  }
-
-  .faq-item.open .faq-a {
-    max-height: 500px;
-    padding-top: 12px;
-  }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .faq-q { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem; color: var(--green-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; user-select: none; }
+  .faq-q .toggle { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--green-light); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1rem; line-height: 1; transition: transform 0.25s, background 0.2s; margin-top: 2px; }
+  .faq-item.open .faq-q .toggle { transform: rotate(45deg); background: var(--green-dark); }
+  .faq-a { font-size: 0.92rem; color: var(--text-mid); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.2s; }
+  .faq-item.open .faq-a { max-height: 500px; padding-top: 12px; }
 
   /* ── RESOURCES ── */
-  .resources-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-
-  .resource-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    transition: box-shadow 0.2s, transform 0.15s;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .resource-card:hover {
-    box-shadow: 0 6px 24px rgba(26,92,53,0.12);
-    transform: translateY(-2px);
-  }
-
-  .resource-tag {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-  }
-
+  .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .resource-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: box-shadow 0.2s, transform 0.15s; text-decoration: none; color: inherit; display: block; }
+  .resource-card:hover { box-shadow: 0 6px 24px rgba(26,92,53,0.12); transform: translateY(-2px); }
+  .resource-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; margin-bottom: 10px; }
   .tag-usda { background: #e6f4ec; color: var(--green-dark); }
   .tag-cdc  { background: #e8f0fe; color: #2a5aad; }
   .tag-state { background: #fff3e0; color: #b85a00; }
   .tag-health { background: #fce4ec; color: #a01a4a; }
   .tag-video { background: #f3e5f5; color: #6a1b9a; }
   .tag-spanish { background: #e8f5e9; color: #2e7d32; }
-
-  .resource-card h4 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    font-size: 0.98rem;
-    color: var(--text-dark);
-    margin-bottom: 6px;
-  }
-
+  .resource-card h4 { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.98rem; color: var(--text-dark); margin-bottom: 6px; }
   .resource-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.55; }
+  .resource-arrow { margin-top: 12px; font-size: 0.83rem; color: var(--green-mid); font-weight: 600; }
 
-  .resource-arrow {
-    margin-top: 12px;
-    font-size: 0.83rem;
-    color: var(--green-mid);
-    font-weight: 600;
-  }
 
-  /* ── AI CHAT ── */
-  .chat-section {
-    background: var(--green-dark);
-    padding: 72px 24px;
-    color: #fff;
-  }
-
-  .chat-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .chat-header { margin-bottom: 36px; }
-
-  .chat-header .section-eyebrow { color: var(--green-light); }
-
-  .chat-header h2 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    color: #fff;
-    margin-bottom: 10px;
-    letter-spacing: -0.5px;
-  }
-
-  .chat-header p { color: rgba(255,255,255,0.78); font-size: 0.98rem; max-width: 560px; }
-
-  .chat-container {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 16px;
-    overflow: hidden;
-    min-height: 500px;
-  }
 
   /* ── FOOTER ── */
-  footer {
-    background: #0d1f14;
-    color: rgba(255,255,255,0.6);
-    padding: 40px 24px;
-    font-size: 0.85rem;
-  }
-
-  .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  footer .brand {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 1rem;
-    color: #fff;
-    margin-bottom: 8px;
-  }
-
+  footer { background: #0d1f14; color: rgba(255,255,255,0.6); padding: 40px 24px; font-size: 0.85rem; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer .brand { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; color: #fff; margin-bottom: 8px; }
   footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
   footer a:hover { color: var(--green-light); }
+  .footer-links { display: flex; flex-direction: column; gap: 6px; }
+  .disclaimer { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; max-width: 1100px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.4); }
 
-  .footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
+  /* ── UTILITY ── */
+  .callout { background: var(--amber-light); border-left: 4px solid var(--amber); border-radius: 0 8px 8px 0; padding: 16px 20px; font-size: 0.92rem; color: #5a3800; margin: 20px 0; line-height: 1.6; }
 
-  .disclaimer {
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 0.8rem;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    color: rgba(255,255,255,0.4);
-  }
-
-  /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
     .lifecycle-steps { flex-direction: column; }
     .lifecycle-step::after { content: '↓'; right: auto; left: 50%; transform: translateX(-50%); top: auto; bottom: -14px; }
@@ -885,28 +225,7 @@
     .lifecycle-step:last-child { padding-bottom: 0; }
     .nav-links { display: none; }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; animation: none !important; }
-  }
-
-  /* ── UTILITY ── */
-  .mt-8 { margin-top: 8px; }
-  .mt-16 { margin-top: 16px; }
-  .mt-24 { margin-top: 24px; }
-  .text-center { text-align: center; }
-
-  /* Highlight call‐out */
-  .callout {
-    background: var(--amber-light);
-    border-left: 4px solid var(--amber);
-    border-radius: 0 8px 8px 0;
-    padding: 16px 20px;
-    font-size: 0.92rem;
-    color: #5a3800;
-    margin: 20px 0;
-    line-height: 1.6;
-  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 </head>
 <body>
@@ -916,13 +235,20 @@
   <div class="nav-inner">
     <a href="#" class="nav-brand">🪲 <span>ScrewwormInfo</span></a>
     <div class="nav-links">
-      <a href="#basics">What Is It?</a>
-      <a href="#symptoms">Symptoms</a>
-      <a href="#prevention">Prevention</a>
-      <a href="#livestock">For Livestock Producers</a>
-      <a href="#kids" class="kids-link">Kids Corner 🌟</a>
-      <a href="#resources">Resources</a>
-      <a href="#ask">Ask a Question</a>
+      <a href="#basics"     data-en="What Is It?"              data-es="¿Qué Es?">What Is It?</a>
+      <a href="#symptoms"   data-en="Symptoms"                 data-es="Síntomas">Symptoms</a>
+      <a href="#prevention" data-en="Prevention"               data-es="Prevención">Prevention</a>
+      <a href="#livestock"  data-en="For Livestock Producers"  data-es="Para Ganaderos">For Livestock Producers</a>
+      <a href="#kids" class="kids-link" data-en="Kids Corner 🌟" data-es="Rincón Infantil 🌟">Kids Corner 🌟</a>
+      <a href="#resources"  data-en="Resources"                data-es="Recursos">Resources</a>
+
+
+      <!-- Language Toggle -->
+      <div class="lang-toggle" id="langToggle" onclick="toggleLang()" title="Switch language / Cambiar idioma">
+        <div class="lang-opt active" id="btnEN">EN</div>
+        <div class="lang-divider"></div>
+        <div class="lang-opt" id="btnES">ES</div>
+      </div>
     </div>
   </div>
 </nav>
@@ -932,7 +258,14 @@
   <div class="alert-inner">
     <div class="alert-icon">⚠️</div>
     <div class="alert-text">
-      <strong>Active Situation — June 2026:</strong> A small number of confirmed animal cases have been reported in South Texas (Zavala, La Salle, and Andrews Counties). Officials are actively responding. For the most current maps and updates, visit <a href="https://www.aphis.usda.gov/livestock-poultry-disease/cattle/ticks/screwworm/new-world-screwworm" target="_blank">screwworm.gov / USDA APHIS</a> or the <a href="https://www.tahc.texas.gov/emergency/nws.html" target="_blank">Texas Animal Health Commission</a>.
+      <strong data-en="Active Situation — June 2026:" data-es="Situación Activa — Junio 2026:">Active Situation — June 2026:</strong>
+      <span data-en="A small number of confirmed animal cases have been reported in South Texas (Zavala, La Salle, and Andrews Counties). Officials are actively responding. For the most current maps and updates, visit"
+            data-es="Se ha confirmado un pequeño número de casos animales en el sur de Texas (condados de Zavala, La Salle y Andrews). Las autoridades están respondiendo activamente. Para los mapas y actualizaciones más recientes, visite">
+        A small number of confirmed animal cases have been reported in South Texas (Zavala, La Salle, and Andrews Counties). Officials are actively responding. For the most current maps and updates, visit
+      </span>
+      <a href="https://www.aphis.usda.gov/livestock-poultry-disease/cattle/ticks/screwworm/new-world-screwworm" target="_blank">USDA APHIS</a>
+      <span data-en="or the" data-es="o la">or the</span>
+      <a href="https://www.tahc.texas.gov/emergency/nws.html" target="_blank" data-en="Texas Animal Health Commission" data-es="Comisión de Salud Animal de Texas">Texas Animal Health Commission</a>.
     </div>
   </div>
 </div>
@@ -940,526 +273,688 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">Public Information & Awareness</div>
-    <h1>New World<br><em>Screwworm</em><br>Know It. Prevent It. Report It.</h1>
-    <p class="hero-sub">
+    <div class="hero-eyebrow" data-en="Public Information &amp; Awareness" data-es="Información y Concientización Pública">Public Information &amp; Awareness</div>
+    <h1 data-en="New World<br><em>Screwworm</em><br>Know It. Prevent It. Report It."
+        data-es="Gusano Barrenador<br><em>del Nuevo Mundo</em><br>Conócelo. Prevénelo. Repórtalo.">
+      New World<br><em>Screwworm</em><br>Know It. Prevent It. Report It.
+    </h1>
+    <p class="hero-sub"
+       data-en="New World Screwworm (NWS) is a parasitic fly that primarily affects livestock and animals. It has moved northward through Central America and Mexico since 2023 and recently been detected in South Texas. Early detection and reporting are our most powerful tools."
+       data-es="El Gusano Barrenador del Nuevo Mundo (GBN) es una mosca parásita que afecta principalmente al ganado y a los animales. Se ha desplazado hacia el norte a través de Centroamérica y México desde 2023 y recientemente fue detectado en el sur de Texas. La detección temprana y el reporte son nuestras herramientas más poderosas.">
       New World Screwworm (NWS) is a parasitic fly that primarily affects livestock and animals. It has moved northward through Central America and Mexico since 2023 and recently been detected in South Texas. Early detection and reporting are our most powerful tools.
     </p>
     <div class="hero-ctas">
-      <a href="#basics" class="btn-primary">📖 Learn the Basics</a>
-      <a href="#ask" class="btn-outline">💬 Ask a Question</a>
+      <a href="#basics" class="btn-primary" data-en="📖 Learn the Basics" data-es="📖 Aprende lo Básico">📖 Learn the Basics</a>
+
     </div>
   </div>
 </section>
 
-<!-- ══════════ WHAT IS IT ══════════ -->
+<!-- WHAT IS IT -->
 <section class="section section-alt" id="basics">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-eyebrow">The Basics</div>
-      <h2>What Is New World Screwworm?</h2>
-      <p class="section-desc">Understanding what it is, how it works, and why early action matters.</p>
+      <div class="section-eyebrow" data-en="The Basics" data-es="Lo Básico">The Basics</div>
+      <h2 data-en="What Is New World Screwworm?" data-es="¿Qué es el Gusano Barrenador del Nuevo Mundo?">What Is New World Screwworm?</h2>
+      <p class="section-desc" data-en="Understanding what it is, how it works, and why early action matters." data-es="Comprende qué es, cómo funciona y por qué actuar a tiempo es importante.">Understanding what it is, how it works, and why early action matters.</p>
     </div>
-
     <div class="basics-grid">
       <div class="basics-card">
         <div class="card-icon">🪰</div>
-        <h3>It's a Fly — Not a Worm</h3>
-        <p>Despite the name, New World Screwworm (<em>Cochliomyia hominivorax</em>) is actually the larva of a fly — about the size of a housefly with orange eyes and a shiny blue-green body with three dark stripes on its back. Most people can't tell it apart from other flies.</p>
+        <h3 data-en="It's a Fly — Not a Worm" data-es="Es una Mosca, No un Gusano">It's a Fly — Not a Worm</h3>
+        <p data-en="Despite the name, New World Screwworm (<em>Cochliomyia hominivorax</em>) is actually the larva of a fly — about the size of a housefly with orange eyes and a shiny blue-green body with three dark stripes on its back. Most people can't tell it apart from other flies."
+           data-es="A pesar del nombre, el Gusano Barrenador del Nuevo Mundo (<em>Cochliomyia hominivorax</em>) es la larva de una mosca — del tamaño de una mosca doméstica, con ojos anaranjados, cuerpo azul verdoso brillante y tres franjas oscuras en el lomo. La mayoría de las personas no puede distinguirla de otras moscas.">
+          Despite the name, New World Screwworm (<em>Cochliomyia hominivorax</em>) is actually the larva of a fly — about the size of a housefly with orange eyes and a shiny blue-green body with three dark stripes on its back. Most people can't tell it apart from other flies.
+        </p>
       </div>
       <div class="basics-card">
         <div class="card-icon">🥚</div>
-        <h3>How It Starts</h3>
-        <p>Female flies lay 200–300 eggs near open wounds or body openings (nose, ears, eyes, mouth, genitals) on living, warm-blooded animals. Even a tiny scratch or tick bite can attract a fly. One female can lay up to 3,000 eggs in her lifetime.</p>
+        <h3 data-en="How It Starts" data-es="Cómo Comienza">How It Starts</h3>
+        <p data-en="Female flies lay 200–300 eggs near open wounds or body openings (nose, ears, eyes, mouth, genitals) on living, warm-blooded animals. Even a tiny scratch or tick bite can attract a fly. One female can lay up to 3,000 eggs in her lifetime."
+           data-es="Las moscas hembra depositan 200 a 300 huevos cerca de heridas abiertas o aberturas corporales (nariz, orejas, ojos, boca, genitales) en animales vivos de sangre caliente. Incluso un pequeño rasguño o picadura de garrapata puede atraer a una mosca. Una hembra puede poner hasta 3,000 huevos en su vida.">
+          Female flies lay 200–300 eggs near open wounds or body openings (nose, ears, eyes, mouth, genitals) on living, warm-blooded animals. Even a tiny scratch or tick bite can attract a fly. One female can lay up to 3,000 eggs in her lifetime.
+        </p>
       </div>
       <div class="basics-card">
         <div class="card-icon">🐛</div>
-        <h3>The Larvae Burrow In</h3>
-        <p>Eggs hatch into cream-colored, screw-shaped larvae (maggots) that burrow <em>into living tissue</em> — not dead material. This is what makes NWS so different from ordinary fly larvae. They feed for about 7 days, deepening the wound.</p>
+        <h3 data-en="The Larvae Burrow In" data-es="Las Larvas se Introducen">The Larvae Burrow In</h3>
+        <p data-en="Eggs hatch into cream-colored, screw-shaped larvae (maggots) that burrow into living tissue — not dead material. This is what makes NWS so different from ordinary fly larvae. They feed for about 7 days, deepening the wound."
+           data-es="Los huevos eclosionan en larvas (gusanos) de color crema con forma de tornillo que se introducen en el tejido vivo, no en materia muerta. Eso es lo que distingue al GBN de las larvas ordinarias. Se alimentan durante unos 7 días, profundizando la herida.">
+          Eggs hatch into cream-colored, screw-shaped larvae (maggots) that burrow into living tissue — not dead material. This is what makes NWS so different from ordinary fly larvae. They feed for about 7 days, deepening the wound.
+        </p>
       </div>
       <div class="basics-card">
         <div class="card-icon">🌎</div>
-        <h3>Where It's Found</h3>
-        <p>NWS is native to warmer parts of the Western Hemisphere — Cuba, Haiti, Dominican Republic, and South America. After being eradicated from the U.S. in 1966, it's been moving northward again since 2023. A small number of cases have recently been confirmed in South Texas.</p>
+        <h3 data-en="Where It's Found" data-es="Dónde Se Encuentra">Where It's Found</h3>
+        <p data-en="NWS is native to warmer parts of the Western Hemisphere — Cuba, Haiti, Dominican Republic, and South America. After being eradicated from the U.S. in 1966, it's been moving northward again since 2023. A small number of cases have recently been confirmed in South Texas."
+           data-es="El GBN es originario de las zonas más cálidas del Hemisferio Occidental: Cuba, Haití, República Dominicana y América del Sur. Tras ser erradicado de los EE. UU. en 1966, ha estado avanzando hacia el norte desde 2023. Recientemente se confirmaron algunos casos en el sur de Texas.">
+          NWS is native to warmer parts of the Western Hemisphere — Cuba, Haiti, Dominican Republic, and South America. After being eradicated from the U.S. in 1966, it's been moving northward again since 2023. A small number of cases have recently been confirmed in South Texas.
+        </p>
       </div>
       <div class="basics-card">
         <div class="card-icon">🏆</div>
-        <h3>We've Beat It Before</h3>
-        <p>The U.S. successfully eradicated NWS in 1966 using the Sterile Insect Technique — releasing sterile flies to prevent reproduction. A 2016–2017 outbreak in the Florida Keys was also handled successfully. Experts have proven tools and knowledge to combat this.</p>
+        <h3 data-en="We've Beat It Before" data-es="Ya lo Hemos Vencido Antes">We've Beat It Before</h3>
+        <p data-en="The U.S. successfully eradicated NWS in 1966 using the Sterile Insect Technique — releasing sterile flies to prevent reproduction. A 2016–2017 outbreak in the Florida Keys was also handled successfully. Experts have proven tools and knowledge to combat this."
+           data-es="Los EE. UU. erradicaron con éxito el GBN en 1966 usando la Técnica del Insecto Estéril: liberar moscas estériles para evitar la reproducción. Un brote de 2016-2017 en los Cayos de Florida también fue controlado con éxito. Los expertos tienen herramientas y conocimientos probados para combatirlo.">
+          The U.S. successfully eradicated NWS in 1966 using the Sterile Insect Technique — releasing sterile flies to prevent reproduction. A 2016–2017 outbreak in the Florida Keys was also handled successfully. Experts have proven tools and knowledge to combat this.
+        </p>
       </div>
       <div class="basics-card">
         <div class="card-icon">🐄</div>
-        <h3>Mostly Animals — Rarely People</h3>
-        <p>NWS mainly affects livestock and wildlife. Human cases are uncommon and have not been locally acquired in the U.S. When found in people, it's very treatable — especially when caught early. The food supply (meat, milk, eggs) is not at risk.</p>
+        <h3 data-en="Mostly Animals — Rarely People" data-es="Principalmente Animales — Rara Vez Personas">Mostly Animals — Rarely People</h3>
+        <p data-en="NWS mainly affects livestock and wildlife. Human cases are uncommon and have not been locally acquired in the U.S. When found in people, it's very treatable — especially when caught early. The food supply (meat, milk, eggs) is not at risk."
+           data-es="El GBN afecta principalmente al ganado y la fauna silvestre. Los casos en humanos son poco frecuentes y no se han adquirido localmente en los EE. UU. Cuando se presenta en personas, es muy tratable, especialmente si se detecta a tiempo. El suministro de alimentos (carne, leche, huevos) no está en riesgo.">
+          NWS mainly affects livestock and wildlife. Human cases are uncommon and have not been locally acquired in the U.S. When found in people, it's very treatable — especially when caught early. The food supply (meat, milk, eggs) is not at risk.
+        </p>
       </div>
     </div>
 
     <!-- Lifecycle -->
-    <div style="margin-top: 52px;">
-      <h3 style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1.2rem;color:var(--green-dark);margin-bottom:28px;">The Life Cycle of a Screwworm Fly</h3>
+    <div style="margin-top:52px;">
+      <h3 style="font-family:'Nunito',sans-serif;font-weight:800;font-size:1.2rem;color:var(--green-dark);margin-bottom:28px;"
+          data-en="The Life Cycle of a Screwworm Fly"
+          data-es="El Ciclo de Vida de la Mosca del Gusano Barrenador">
+        The Life Cycle of a Screwworm Fly
+      </h3>
       <div class="lifecycle-steps">
         <div class="lifecycle-step">
           <div class="step-num">1</div>
-          <h4>Eggs Laid</h4>
-          <p>Female lays 200–300 eggs on a wound or body opening</p>
+          <h4 data-en="Eggs Laid" data-es="Huevos Depositados">Eggs Laid</h4>
+          <p data-en="Female lays 200–300 eggs on a wound or body opening" data-es="La hembra deposita 200–300 huevos en una herida o abertura corporal">Female lays 200–300 eggs on a wound or body opening</p>
         </div>
         <div class="lifecycle-step">
           <div class="step-num">2</div>
-          <h4>Eggs Hatch</h4>
-          <p>Larvae emerge within 12–24 hours and immediately begin burrowing</p>
+          <h4 data-en="Eggs Hatch" data-es="Eclosión">Eggs Hatch</h4>
+          <p data-en="Larvae emerge within 12–24 hours and immediately begin burrowing" data-es="Las larvas emergen en 12–24 horas y comienzan a introducirse de inmediato">Larvae emerge within 12–24 hours and immediately begin burrowing</p>
         </div>
         <div class="lifecycle-step">
           <div class="step-num">3</div>
-          <h4>Larvae Feed</h4>
-          <p>Burrow into living tissue for ~7 days, enlarging the wound</p>
+          <h4 data-en="Larvae Feed" data-es="Larvas se Alimentan">Larvae Feed</h4>
+          <p data-en="Burrow into living tissue for ~7 days, enlarging the wound" data-es="Se introducen en tejido vivo por ~7 días, agrandando la herida">Burrow into living tissue for ~7 days, enlarging the wound</p>
         </div>
         <div class="lifecycle-step">
           <div class="step-num">4</div>
-          <h4>Drop to Soil</h4>
-          <p>Mature larvae drop to the ground and burrow into the soil to pupate</p>
+          <h4 data-en="Drop to Soil" data-es="Caen al Suelo">Drop to Soil</h4>
+          <p data-en="Mature larvae drop to the ground and burrow into the soil to pupate" data-es="Las larvas maduras caen al suelo y se entierran para empupar">Mature larvae drop to the ground and burrow into the soil to pupate</p>
         </div>
         <div class="lifecycle-step">
           <div class="step-num">5</div>
-          <h4>Adult Fly Emerges</h4>
-          <p>Adult flies emerge in 7–54 days, ready to mate and restart the cycle</p>
+          <h4 data-en="Adult Fly Emerges" data-es="Emerge la Mosca Adulta">Adult Fly Emerges</h4>
+          <p data-en="Adult flies emerge in 7–54 days, ready to mate and restart the cycle" data-es="Las moscas adultas emergen en 7–54 días, listas para aparearse y reiniciar el ciclo">Adult flies emerge in 7–54 days, ready to mate and restart the cycle</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ SYMPTOMS ══════════ -->
+<!-- SYMPTOMS -->
 <section class="section" id="symptoms">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-eyebrow">Signs & Symptoms</div>
-      <h2>What to Watch For</h2>
-      <p class="section-desc">Knowing the signs — in people or animals — helps you act fast. Early treatment makes a big difference.</p>
+      <div class="section-eyebrow" data-en="Signs &amp; Symptoms" data-es="Señales y Síntomas">Signs &amp; Symptoms</div>
+      <h2 data-en="What to Watch For" data-es="Qué Observar">What to Watch For</h2>
+      <p class="section-desc" data-en="Knowing the signs — in people or animals — helps you act fast. Early treatment makes a big difference." data-es="Conocer las señales, en personas o animales, ayuda a actuar rápido. El tratamiento temprano hace una gran diferencia.">Knowing the signs — in people or animals — helps you act fast. Early treatment makes a big difference.</p>
     </div>
-
     <div class="two-col">
       <div class="symptom-list">
-        <h3>🐄 In Animals</h3>
+        <h3 data-en="🐄 In Animals" data-es="🐄 En Animales">🐄 In Animals</h3>
         <ul>
-          <li>A wound that isn't healing or is getting bigger</li>
-          <li>Unusual drainage, discharge, or foul odor from a wound</li>
-          <li>Visible maggots (larvae) in or around a wound</li>
-          <li>Animal seems uncomfortable, won't eat, or keeps to itself</li>
-          <li>Swelling, redness, or inflammation around a wound</li>
-          <li>Newborns: check the navel carefully in first days of life</li>
-          <li>New mothers: check the birth area; males check the sheath</li>
+          <li data-en="A wound that isn't healing or is getting bigger" data-es="Una herida que no cicatriza o que va creciendo">A wound that isn't healing or is getting bigger</li>
+          <li data-en="Unusual drainage, discharge, or foul odor from a wound" data-es="Drenaje, secreción o mal olor inusuales en una herida">Unusual drainage, discharge, or foul odor from a wound</li>
+          <li data-en="Visible maggots (larvae) in or around a wound" data-es="Larvas visibles en una herida o alrededor de ella">Visible maggots (larvae) in or around a wound</li>
+          <li data-en="Animal seems uncomfortable, won't eat, or keeps to itself" data-es="El animal parece incómodo, no come o se aísla">Animal seems uncomfortable, won't eat, or keeps to itself</li>
+          <li data-en="Swelling, redness, or inflammation around a wound" data-es="Hinchazón, enrojecimiento o inflamación alrededor de una herida">Swelling, redness, or inflammation around a wound</li>
+          <li data-en="Newborns: check the navel carefully in first days of life" data-es="Recién nacidos: revise el ombligo cuidadosamente en los primeros días de vida">Newborns: check the navel carefully in first days of life</li>
+          <li data-en="New mothers: check the birth area; males check the sheath" data-es="Madres recientes: revise el área del parto; machos: revisar el prepucio">New mothers: check the birth area; males check the sheath</li>
         </ul>
       </div>
       <div class="symptom-list">
-        <h3>👤 In People</h3>
+        <h3 data-en="👤 In People" data-es="👤 En Personas">👤 In People</h3>
         <ul>
-          <li>A wound or sore that isn't healing and worsens over a few days</li>
-          <li>Feeling of movement within a wound or sore</li>
-          <li>Visible larvae (maggots) in a wound, ear, nose, or mouth</li>
-          <li>A foul-smelling odor from the site of infestation</li>
-          <li>Intense or increasing pain at the wound site</li>
-          <li>Bleeding from open sores</li>
-          <li>Fever or chills (may indicate a secondary infection)</li>
+          <li data-en="A wound or sore that isn't healing and worsens over a few days" data-es="Una herida o llaga que no cicatriza y empeora en pocos días">A wound or sore that isn't healing and worsens over a few days</li>
+          <li data-en="Feeling of movement within a wound or sore" data-es="Sensación de movimiento dentro de una herida o llaga">Feeling of movement within a wound or sore</li>
+          <li data-en="Visible larvae (maggots) in a wound, ear, nose, or mouth" data-es="Larvas visibles en una herida, oído, nariz o boca">Visible larvae (maggots) in a wound, ear, nose, or mouth</li>
+          <li data-en="A foul-smelling odor from the site of infestation" data-es="Mal olor proveniente del sitio de infestación">A foul-smelling odor from the site of infestation</li>
+          <li data-en="Intense or increasing pain at the wound site" data-es="Dolor intenso o creciente en el sitio de la herida">Intense or increasing pain at the wound site</li>
+          <li data-en="Bleeding from open sores" data-es="Sangrado de llagas abiertas">Bleeding from open sores</li>
+          <li data-en="Fever or chills (may indicate a secondary infection)" data-es="Fiebre o escalofríos (pueden indicar una infección secundaria)">Fever or chills (may indicate a secondary infection)</li>
         </ul>
       </div>
     </div>
-
     <div class="callout" style="margin-top:28px;">
-      🚨 <strong>If you suspect NWS in a person:</strong> Contact a doctor or urgent care immediately. Do not try to remove larvae yourself — let a healthcare provider do this safely. If it feels like an emergency, call 911. For a health center near you, call the <strong>NCFH Call for Health Helpline: 1 (800) 377-9968</strong> (also available via WhatsApp at 1-737-999-4162 — English &amp; Spanish).
+      🚨 <strong data-en="If you suspect NWS in a person:" data-es="Si sospecha GBN en una persona:">If you suspect NWS in a person:</strong>
+      <span data-en="Contact a doctor or urgent care immediately. Do not try to remove larvae yourself — let a healthcare provider do this safely. If it feels like an emergency, call 911. For a health center near you, call the"
+            data-es="Contacte a un médico o clínica de urgencias de inmediato. No intente extraer las larvas usted mismo — deje que un profesional de salud lo haga con seguridad. Si parece una emergencia, llame al 911. Para encontrar un centro de salud, llame a la">
+        Contact a doctor or urgent care immediately. Do not try to remove larvae yourself — let a healthcare provider do this safely. If it feels like an emergency, call 911. For a health center near you, call the
+      </span>
+      <strong>NCFH Call for Health Helpline: 1 (800) 377-9968</strong>
+      <span data-en="(also available via WhatsApp at 1-737-999-4162 — English &amp; Spanish)." data-es="(también disponible por WhatsApp al 1-737-999-4162 — inglés y español).">(also available via WhatsApp at 1-737-999-4162 — English &amp; Spanish).</span>
     </div>
-
-    <div class="callout" style="border-left-color:var(--green-mid);background:#e8f5ee;color:#1a5c35;">
-      🐄 <strong>If you suspect NWS in an animal:</strong> Keep the animal in place. Do <em>not</em> discard any larvae. Call your veterinarian AND your state animal-health official right away. They'll guide next steps and collect a sample for lab confirmation.
+    <div class="callout" style="border-left-color:var(--green-mid);background:#e8f5ee;color:#1a5c35;margin-top:16px;">
+      🐄 <strong data-en="If you suspect NWS in an animal:" data-es="Si sospecha GBN en un animal:">If you suspect NWS in an animal:</strong>
+      <span data-en="Keep the animal in place. Do not discard any larvae. Call your veterinarian AND your state animal-health official right away. They'll guide next steps and collect a sample for lab confirmation."
+            data-es="Mantenga al animal en su lugar. No deseche ninguna larva. Llame a su veterinario Y al oficial de salud animal de su estado de inmediato. Ellos guiarán los próximos pasos y recopilarán una muestra para confirmación de laboratorio.">
+        Keep the animal in place. Do not discard any larvae. Call your veterinarian AND your state animal-health official right away. They'll guide next steps and collect a sample for lab confirmation.
+      </span>
     </div>
   </div>
 </section>
 
-<!-- ══════════ PREVENTION ══════════ -->
+<!-- PREVENTION -->
 <section class="section section-alt" id="prevention">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-eyebrow">Prevention</div>
-      <h2>Simple Steps That Make a Difference</h2>
-      <p class="section-desc">Prevention is mostly common sense. Fewer wounds + quick wound care + awareness = powerful protection.</p>
+      <div class="section-eyebrow" data-en="Prevention" data-es="Prevención">Prevention</div>
+      <h2 data-en="Simple Steps That Make a Difference" data-es="Pasos Sencillos que Marcan la Diferencia">Simple Steps That Make a Difference</h2>
+      <p class="section-desc" data-en="Prevention is mostly common sense. Fewer wounds + quick wound care + awareness = powerful protection." data-es="La prevención es principalmente sentido común. Menos heridas + cuidado rápido de heridas + conciencia = protección poderosa.">Prevention is mostly common sense. Fewer wounds + quick wound care + awareness = powerful protection.</p>
     </div>
-
     <div class="prevention-grid">
       <div class="prev-card">
         <div class="icon">🩹</div>
-        <h4>Cover All Wounds</h4>
-        <p>Keep any cut, scrape, or surgical site clean and covered, no matter how small. Even a tick bite can attract a female fly to lay eggs. This is the single most effective personal precaution.</p>
+        <h4 data-en="Cover All Wounds" data-es="Cubra Todas las Heridas">Cover All Wounds</h4>
+        <p data-en="Keep any cut, scrape, or surgical site clean and covered, no matter how small. Even a tick bite can attract a female fly to lay eggs. This is the single most effective personal precaution."
+           data-es="Mantenga cualquier corte, raspadura o sitio quirúrgico limpio y cubierto, sin importar cuán pequeño sea. Incluso una picadura de garrapata puede atraer a una mosca hembra para poner huevos. Esta es la precaución personal más efectiva.">
+          Keep any cut, scrape, or surgical site clean and covered, no matter how small. Even a tick bite can attract a female fly to lay eggs. This is the single most effective personal precaution.
+        </p>
       </div>
       <div class="prev-card">
         <div class="icon">🛏️</div>
-        <h4>Sleep Protected</h4>
-        <p>Sleep indoors with closed or screened windows. If outside, use a bed net or screened tent — especially in areas with active cases or warm seasons.</p>
+        <h4 data-en="Sleep Protected" data-es="Duerma Protegido">Sleep Protected</h4>
+        <p data-en="Sleep indoors with closed or screened windows. If outside, use a bed net or screened tent — especially in areas with active cases or warm seasons."
+           data-es="Duerma en interiores con ventanas cerradas o con mosquitero. Si está al aire libre, use un mosquitero o una tienda con malla, especialmente en áreas con casos activos o en épocas cálidas.">
+          Sleep indoors with closed or screened windows. If outside, use a bed net or screened tent — especially in areas with active cases or warm seasons.
+        </p>
       </div>
       <div class="prev-card">
         <div class="icon">👕</div>
-        <h4>Cover Up Outdoors</h4>
-        <p>Wear loose-fitting long-sleeved shirts and pants, hats, and socks to minimize skin exposure when spending time outside in risk areas.</p>
+        <h4 data-en="Cover Up Outdoors" data-es="Cúbrase al Aire Libre">Cover Up Outdoors</h4>
+        <p data-en="Wear loose-fitting long-sleeved shirts and pants, hats, and socks to minimize skin exposure when spending time outside in risk areas."
+           data-es="Use camisas de manga larga holgadas, pantalones, sombreros y calcetines para minimizar la exposición de la piel al estar al aire libre en zonas de riesgo.">
+          Wear loose-fitting long-sleeved shirts and pants, hats, and socks to minimize skin exposure when spending time outside in risk areas.
+        </p>
       </div>
       <div class="prev-card">
         <div class="icon">🧴</div>
-        <h4>Use Insect Repellent</h4>
-        <p>Apply any EPA-registered insect repellent as directed. Consider treating clothing and gear with 0.5% permethrin for an additional layer of protection against biting insects.</p>
+        <h4 data-en="Use Insect Repellent" data-es="Use Repelente de Insectos">Use Insect Repellent</h4>
+        <p data-en="Apply any EPA-registered insect repellent as directed. Consider treating clothing and gear with 0.5% permethrin for an additional layer of protection against biting insects."
+           data-es="Aplique cualquier repelente de insectos registrado por la EPA según las instrucciones. Considere tratar la ropa y el equipo con permetrina al 0.5% para una capa adicional de protección contra insectos que pican.">
+          Apply any EPA-registered insect repellent as directed. Consider treating clothing and gear with 0.5% permethrin for an additional layer of protection against biting insects.
+        </p>
       </div>
       <div class="prev-card">
         <div class="icon">🚫</div>
-        <h4>Dispose of Larvae Safely</h4>
-        <p>Never throw live maggots in the trash or outside — this could allow the fly to complete its lifecycle. Place them in a sealed container with rubbing alcohol and bring to your healthcare provider.</p>
+        <h4 data-en="Dispose of Larvae Safely" data-es="Deseche las Larvas de Forma Segura">Dispose of Larvae Safely</h4>
+        <p data-en="Never throw live maggots in the trash or outside — this could allow the fly to complete its lifecycle. Place them in a sealed container with rubbing alcohol and bring to your healthcare provider."
+           data-es="Nunca tire larvas vivas a la basura ni al exterior, ya que esto podría permitir que la mosca complete su ciclo de vida. Colóquelas en un recipiente sellado con alcohol isopropílico y llévelas a su proveedor de salud.">
+          Never throw live maggots in the trash or outside — this could allow the fly to complete its lifecycle. Place them in a sealed container with rubbing alcohol and bring to your healthcare provider.
+        </p>
       </div>
       <div class="prev-card">
         <div class="icon">✈️</div>
-        <h4>Returning Travelers</h4>
-        <p>If you've recently traveled to Mexico, Central America, or the Caribbean, monitor any wounds for 2 weeks. If a wound starts worsening instead of healing, see a doctor and mention your travel history.</p>
+        <h4 data-en="Returning Travelers" data-es="Viajeros que Regresan">Returning Travelers</h4>
+        <p data-en="If you've recently traveled to Mexico, Central America, or the Caribbean, monitor any wounds for 2 weeks. If a wound starts worsening instead of healing, see a doctor and mention your travel history."
+           data-es="Si viajó recientemente a México, Centroamérica o el Caribe, monitoree cualquier herida durante 2 semanas. Si una herida empeora en lugar de sanar, consulte a un médico y mencione su historial de viaje.">
+          If you've recently traveled to Mexico, Central America, or the Caribbean, monitor any wounds for 2 weeks. If a wound starts worsening instead of healing, see a doctor and mention your travel history.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ LIVESTOCK PRODUCERS ══════════ -->
+<!-- LIVESTOCK -->
 <section class="livestock-section" id="livestock">
   <div class="livestock-inner">
-    <div class="section-eyebrow">For Livestock Producers & Ranchers</div>
-    <h2>Protecting Your Animals and Your Operation</h2>
-    <p class="livestock-desc">If you raise cattle, sheep, goats, horses, or other livestock, these steps can help protect your herd and your livelihood. Early detection and reporting are your best defenses.</p>
-
+    <div class="section-eyebrow" data-en="For Livestock Producers &amp; Ranchers" data-es="Para Ganaderos y Rancheros">For Livestock Producers &amp; Ranchers</div>
+    <h2 data-en="Protecting Your Animals and Your Operation" data-es="Proteja Sus Animales y Su Operación">Protecting Your Animals and Your Operation</h2>
+    <p class="livestock-desc"
+       data-en="If you raise cattle, sheep, goats, horses, or other livestock, these steps can help protect your herd and your livelihood. Early detection and reporting are your best defenses."
+       data-es="Si cría ganado bovino, ovino, caprino, equino u otros animales, estos pasos pueden ayudar a proteger su rebaño y su sustento. La detección temprana y el reporte son sus mejores defensas.">
+      If you raise cattle, sheep, goats, horses, or other livestock, these steps can help protect your herd and your livelihood. Early detection and reporting are your best defenses.
+    </p>
     <div class="livestock-grid">
       <div class="livestock-card">
         <div class="icon">🔍</div>
-        <h4>Inspect Animals Regularly</h4>
-        <p>Check all wounds regularly, plus natural body openings: nose, ears, eyes, and genitals. For newborns, inspect the navel closely in the first days of life. For new mothers, check the birth area. For males, check the sheath.</p>
+        <h4 data-en="Inspect Animals Regularly" data-es="Inspeccione los Animales con Regularidad">Inspect Animals Regularly</h4>
+        <p data-en="Check all wounds regularly, plus natural body openings: nose, ears, eyes, and genitals. For newborns, inspect the navel closely in the first days of life. For new mothers, check the birth area. For males, check the sheath."
+           data-es="Revise todas las heridas regularmente, además de las aberturas naturales del cuerpo: nariz, orejas, ojos y genitales. En recién nacidos, inspeccione el ombligo de cerca en los primeros días. En madres recientes, revise el área del parto. En machos, revise el prepucio.">
+          Check all wounds regularly, plus natural body openings: nose, ears, eyes, and genitals. For newborns, inspect the navel closely in the first days of life. For new mothers, check the birth area. For males, check the sheath.
+        </p>
       </div>
       <div class="livestock-card">
         <div class="icon">🩺</div>
-        <h4>Treat Wounds Immediately</h4>
-        <p>Treat every wound — no matter how small — as soon as you notice it. Treat newborn navels right after birth. Talk to your vet about approved wound treatment products for your species.</p>
+        <h4 data-en="Treat Wounds Immediately" data-es="Trate las Heridas de Inmediato">Treat Wounds Immediately</h4>
+        <p data-en="Treat every wound — no matter how small — as soon as you notice it. Treat newborn navels right after birth. Talk to your vet about approved wound treatment products for your species."
+           data-es="Trate cada herida, sin importar cuán pequeña sea, tan pronto como la note. Trate los ombligos de los recién nacidos justo después del parto. Consulte a su veterinario sobre productos aprobados para el tratamiento de heridas según la especie.">
+          Treat every wound — no matter how small — as soon as you notice it. Treat newborn navels right after birth. Talk to your vet about approved wound treatment products for your species.
+        </p>
       </div>
       <div class="livestock-card">
         <div class="icon">📅</div>
-        <h4>Time Procedures Carefully</h4>
-        <p>During higher-risk periods or near active cases, postpone optional procedures like dehorning, castration, or branding when possible. Work with your vet to schedule these in cooler, lower-risk seasons.</p>
+        <h4 data-en="Time Procedures Carefully" data-es="Planifique los Procedimientos con Cuidado">Time Procedures Carefully</h4>
+        <p data-en="During higher-risk periods or near active cases, postpone optional procedures like dehorning, castration, or branding when possible. Work with your vet to schedule these in cooler, lower-risk seasons."
+           data-es="Durante períodos de mayor riesgo o cerca de casos activos, posponga procedimientos opcionales como el descorne, la castración o el marcado cuando sea posible. Trabaje con su veterinario para programarlos en temporadas más frescas y de menor riesgo.">
+          During higher-risk periods or near active cases, postpone optional procedures like dehorning, castration, or branding when possible. Work with your vet to schedule these in cooler, lower-risk seasons.
+        </p>
       </div>
       <div class="livestock-card">
         <div class="icon">🦟</div>
-        <h4>Control Biting Insects</h4>
-        <p>Manage ticks and biting insects on your animals — these create the wounds that attract NWS flies. Eliminate sharp edges in pens and paddocks that could cause injury. Keep facilities clean.</p>
+        <h4 data-en="Control Biting Insects" data-es="Controle los Insectos que Pican">Control Biting Insects</h4>
+        <p data-en="Manage ticks and biting insects on your animals — these create the wounds that attract NWS flies. Eliminate sharp edges in pens and paddocks that could cause injury. Keep facilities clean."
+           data-es="Controle las garrapatas e insectos que pican en sus animales, ya que crean las heridas que atraen las moscas del GBN. Elimine bordes afilados en corrales y potreros que puedan causar lesiones. Mantenga las instalaciones limpias.">
+          Manage ticks and biting insects on your animals — these create the wounds that attract NWS flies. Eliminate sharp edges in pens and paddocks that could cause injury. Keep facilities clean.
+        </p>
       </div>
       <div class="livestock-card">
         <div class="icon">💊</div>
-        <h4>Know Your Treatment Options</h4>
-        <p>Several products are authorized for prevention or treatment in cattle, dogs, and cats. Consult your veterinarian for current approved options and the right choice for each animal species. Do not use products without vet guidance.</p>
+        <h4 data-en="Know Your Treatment Options" data-es="Conozca Sus Opciones de Tratamiento">Know Your Treatment Options</h4>
+        <p data-en="Several products are authorized for prevention or treatment in cattle, dogs, and cats. Consult your veterinarian for current approved options and the right choice for each animal species. Do not use products without vet guidance."
+           data-es="Varios productos están autorizados para la prevención o el tratamiento en bovinos, perros y gatos. Consulte a su veterinario sobre las opciones aprobadas actualmente y la elección correcta para cada especie. No use productos sin orientación veterinaria.">
+          Several products are authorized for prevention or treatment in cattle, dogs, and cats. Consult your veterinarian for current approved options and the right choice for each animal species. Do not use products without vet guidance.
+        </p>
       </div>
       <div class="livestock-card">
         <div class="icon">📞</div>
-        <h4>Report Immediately</h4>
-        <p>If you see a wound with maggots, don't wait. Keep the animal in place, don't discard larvae, and call your vet and state animal-health official right away. Reporting protects your neighbors too.</p>
+        <h4 data-en="Report Immediately" data-es="Reporte de Inmediato">Report Immediately</h4>
+        <p data-en="If you see a wound with maggots, don't wait. Keep the animal in place, don't discard larvae, and call your vet and state animal-health official right away. Reporting protects your neighbors too."
+           data-es="Si ve una herida con larvas, no espere. Mantenga al animal en su lugar, no deseche las larvas y llame a su veterinario y al oficial de salud animal estatal de inmediato. Reportar también protege a sus vecinos.">
+          If you see a wound with maggots, don't wait. Keep the animal in place, don't discard larvae, and call your vet and state animal-health official right away. Reporting protects your neighbors too.
+        </p>
       </div>
     </div>
-
-    <!-- Check zones + report -->
     <div style="margin-bottom:24px;">
       <p style="color:rgba(255,255,255,0.7);font-size:0.92rem;margin-bottom:12px;">
-        🗺️ <strong style="color:#fff;">Current Infested Zone Map (Texas):</strong> Check the TAHC live map to see if you're in or near a quarantine zone.
+        🗺️ <strong style="color:#fff;" data-en="Current Infested Zone Map (Texas):" data-es="Mapa Actual de la Zona Infestada (Texas):">Current Infested Zone Map (Texas):</strong>
+        <span data-en="Check the TAHC live map to see if you're in or near a quarantine zone." data-es="Consulte el mapa en vivo de TAHC para ver si está en o cerca de una zona de cuarentena.">Check the TAHC live map to see if you're in or near a quarantine zone.</span>
       </p>
-      <a href="https://tahc.maps.arcgis.com/apps/instant/basic/index.html?appid=fc8902674b004a778f44e3fe219c255f" target="_blank" style="color:var(--green-light);font-weight:600;font-size:0.9rem;text-decoration:none;">→ Open TAHC Quarantine Zone Map</a>
+      <a href="https://tahc.maps.arcgis.com/apps/instant/basic/index.html?appid=fc8902674b004a778f44e3fe219c255f" target="_blank"
+         style="color:var(--green-light);font-weight:600;font-size:0.9rem;text-decoration:none;"
+         data-en="→ Open TAHC Quarantine Zone Map" data-es="→ Abrir Mapa de Zona de Cuarentena TAHC">→ Open TAHC Quarantine Zone Map</a>
     </div>
-
     <div class="report-box">
       <div class="report-box-text">
-        <h3>🚨 Suspect a Case? Report It Now.</h3>
-        <p>For animals: call your vet and state animal-health official. For people: contact a doctor.<br>For suspected wildlife cases, contact USDA APHIS Wildlife Services.</p>
+        <h3 data-en="🚨 Suspect a Case? Report It Now." data-es="🚨 ¿Sospecha un Caso? Repórtelo Ahora.">🚨 Suspect a Case? Report It Now.</h3>
+        <p data-en="For animals: call your vet and state animal-health official. For people: contact a doctor. For suspected wildlife cases, contact USDA APHIS Wildlife Services."
+           data-es="Para animales: llame a su veterinario y al oficial de salud animal estatal. Para personas: contacte a un médico. Para casos sospechosos en fauna silvestre, contacte a USDA APHIS Servicios de Vida Silvestre.">
+          For animals: call your vet and state animal-health official. For people: contact a doctor. For suspected wildlife cases, contact USDA APHIS Wildlife Services.
+        </p>
       </div>
-      <a href="https://www.aphis.usda.gov/animals/animal-health/livestock-and-poultry-disease/stop-screwworm/report-suspected-cases-screwworm" target="_blank" class="btn-report">Report to USDA APHIS →</a>
+      <a href="https://www.aphis.usda.gov/animals/animal-health/livestock-and-poultry-disease/stop-screwworm/report-suspected-cases-screwworm" target="_blank" class="btn-report"
+         data-en="Report to USDA APHIS →" data-es="Reportar a USDA APHIS →">Report to USDA APHIS →</a>
     </div>
   </div>
 </section>
 
-<!-- ══════════ KIDS CORNER ══════════ -->
+<!-- KIDS -->
 <section class="kids-section" id="kids">
   <div class="kids-header">
-    <div class="kids-badge">⭐ Kids Corner ⭐</div>
-    <h2>Learn About the Screwworm Fly!</h2>
-    <p>A fun, friendly guide for young learners ages 6–12 — find out what this tiny bug is, why it matters, and how YOU can help!</p>
+    <div class="kids-badge" data-en="⭐ Kids Corner ⭐" data-es="⭐ Rincón Infantil ⭐">⭐ Kids Corner ⭐</div>
+    <h2 data-en="Learn About the Screwworm Fly!" data-es="¡Aprende sobre la Mosca del Gusano Barrenador!">Learn About the Screwworm Fly!</h2>
+    <p data-en="A fun, friendly guide for young learners ages 6–12 — find out what this tiny bug is, why it matters, and how YOU can help!"
+       data-es="Una guía divertida y amigable para niños de 6 a 12 años — ¡descubre qué es este pequeño insecto, por qué importa y cómo TÚ puedes ayudar!">
+      A fun, friendly guide for young learners ages 6–12 — find out what this tiny bug is, why it matters, and how YOU can help!
+    </p>
   </div>
-
   <div class="kids-cards">
     <div class="kids-card purple">
       <span class="kid-icon">🪰</span>
-      <h3>Wait — It's a FLY?</h3>
-      <p>Yep! Even though it's called a "screwworm," it's actually a tiny fly! The fly lays eggs in small cuts on animals, and the baby flies (called larvae) look a little bit like tiny screws — that's how they got the name. Kind of like how a caterpillar is the baby version of a butterfly!</p>
+      <h3 data-en="Wait — It's a FLY?" data-es="¡Espera — ¿Es una MOSCA?">Wait — It's a FLY?</h3>
+      <p data-en="Yep! Even though it's called a "screwworm," it's actually a tiny fly! The fly lays eggs in small cuts on animals, and the baby flies (called larvae) look a little bit like tiny screws — that's how they got the name. Kind of like how a caterpillar is the baby version of a butterfly!"
+         data-es="¡Sí! Aunque se llama 'gusano barrenador', ¡en realidad es una pequeña mosca! La mosca pone huevos en pequeños cortes de animales, y las moscas bebé (llamadas larvas) se parecen un poco a tornillos pequeños — ¡así es como obtuvieron el nombre! Como una oruga que es la versión bebé de una mariposa.">
+        Yep! Even though it's called a "screwworm," it's actually a tiny fly! The fly lays eggs in small cuts on animals, and the baby flies (called larvae) look a little bit like tiny screws — that's how they got the name. Kind of like how a caterpillar is the baby version of a butterfly!
+      </p>
     </div>
     <div class="kids-card orange">
       <span class="kid-icon">🐄</span>
-      <h3>Who Does It Affect?</h3>
-      <p>Mostly farm animals like cows, sheep, goats, and horses. Sometimes deer and other wild animals too. People can very rarely get it, but it's not common at all. You definitely cannot catch it from another person, like you can a cold!</p>
+      <h3 data-en="Who Does It Affect?" data-es="¿A Quién Afecta?">Who Does It Affect?</h3>
+      <p data-en="Mostly farm animals like cows, sheep, goats, and horses. Sometimes deer and other wild animals too. People can very rarely get it, but it's not common at all. You definitely cannot catch it from another person, like you can a cold!"
+         data-es="Principalmente animales de granja como vacas, ovejas, cabras y caballos. A veces también venados y otros animales salvajes. Las personas muy raramente lo contraen y no es común. ¡Definitivamente no puedes contagiarte de otra persona, como sí pasa con un resfriado!">
+        Mostly farm animals like cows, sheep, goats, and horses. Sometimes deer and other wild animals too. People can very rarely get it, but it's not common at all. You definitely cannot catch it from another person, like you can a cold!
+      </p>
     </div>
     <div class="kids-card teal">
       <span class="kid-icon">🦸</span>
-      <h3>Scientists Are the Heroes!</h3>
-      <p>Way back in the 1960s, scientists figured out a really clever trick: they released lots of special flies that couldn't have babies. Those flies tricked the other flies into not having babies either — and it WORKED! The U.S. got rid of the screwworm completely! Scientists are working hard to do that again.</p>
+      <h3 data-en="Scientists Are the Heroes!" data-es="¡Los Científicos Son los Héroes!">Scientists Are the Heroes!</h3>
+      <p data-en="Way back in the 1960s, scientists figured out a really clever trick: they released lots of special flies that couldn't have babies. Those flies tricked the other flies into not having babies either — and it WORKED! The U.S. got rid of the screwworm completely! Scientists are working hard to do that again."
+         data-es="Hace mucho tiempo, en los años 60, los científicos descubrieron un truco muy inteligente: liberaron muchas moscas especiales que no podían tener bebés. ¡Esas moscas engañaron a las otras para que tampoco tuvieran bebés — y FUNCIONÓ! ¡Los EE. UU. eliminaron completamente el gusano barrenador! Los científicos trabajan arduamente para lograrlo de nuevo.">
+        Way back in the 1960s, scientists figured out a really clever trick: they released lots of special flies that couldn't have babies. Those flies tricked the other flies into not having babies either — and it WORKED! The U.S. got rid of the screwworm completely! Scientists are working hard to do that again.
+      </p>
     </div>
     <div class="kids-card pink">
       <span class="kid-icon">🩹</span>
-      <h3>How Can YOU Help?</h3>
-      <p>It's easy! Keep your scrapes and cuts clean and covered with a bandage. If you live on a farm or ranch, help grown-ups check animals' wounds. If you see any animal with a weird-looking cut, tell an adult right away. You can be an animal protector!</p>
+      <h3 data-en="How Can YOU Help?" data-es="¿Cómo Puedes TÚ Ayudar?">How Can YOU Help?</h3>
+      <p data-en="It's easy! Keep your scrapes and cuts clean and covered with a bandage. If you live on a farm or ranch, help grown-ups check animals' wounds. If you see any animal with a weird-looking cut, tell an adult right away. You can be an animal protector!"
+         data-es="¡Es fácil! Mantén tus raspones y cortes limpios y cubiertos con una curita. Si vives en una granja o rancho, ayuda a los adultos a revisar las heridas de los animales. Si ves un animal con una herida extraña, ¡dile a un adulto de inmediato! ¡Puedes ser un protector de animales!">
+        It's easy! Keep your scrapes and cuts clean and covered with a bandage. If you live on a farm or ranch, help grown-ups check animals' wounds. If you see any animal with a weird-looking cut, tell an adult right away. You can be an animal protector!
+      </p>
     </div>
   </div>
-
   <div class="fun-fact-box">
-    <h3>⭐ Super Cool Science Fact! ⭐</h3>
-    <p>Scientists got rid of the screwworm fly without using harmful chemicals! They used something called the <strong>Sterile Insect Technique</strong> — they made male flies unable to have babies, then released millions of them. The female flies mated with these special males, and no eggs could hatch. It's like a scientific superpower — and it worked for over 50 years!</p>
+    <h3 data-en="⭐ Super Cool Science Fact! ⭐" data-es="⭐ ¡Dato Científico Supergenial! ⭐">⭐ Super Cool Science Fact! ⭐</h3>
+    <p data-en="Scientists got rid of the screwworm fly without using harmful chemicals! They used something called the Sterile Insect Technique — they made male flies unable to have babies, then released millions of them. The female flies mated with these special males, and no eggs could hatch. It's like a scientific superpower — and it worked for over 50 years!"
+       data-es="¡Los científicos eliminaron la mosca del gusano barrenador sin usar químicos dañinos! Usaron algo llamado la Técnica del Insecto Estéril: hicieron que los machos no pudieran tener bebés y luego liberaron millones de ellos. Las moscas hembra se aparearon con estos machos especiales y ningún huevo pudo eclosionar. ¡Es como un superpoder científico — y funcionó por más de 50 años!">
+      Scientists got rid of the screwworm fly without using harmful chemicals! They used something called the <strong>Sterile Insect Technique</strong> — they made male flies unable to have babies, then released millions of them. The female flies mated with these special males, and no eggs could hatch. It's like a scientific superpower — and it worked for over 50 years!
+    </p>
   </div>
-
-  <div class="kids-tips" style="max-width:700px;margin:0 auto;">
-    <h3>🌟 Kid's Safety Tips — Easy to Remember!</h3>
+  <div class="kids-tips">
+    <h3 data-en="🌟 Kid's Safety Tips — Easy to Remember!" data-es="🌟 Consejos de Seguridad para Niños — ¡Fácil de Recordar!">🌟 Kid's Safety Tips — Easy to Remember!</h3>
     <ul>
-      <li>
-        <span class="tip-emoji">🩹</span>
-        <span>Always put a bandage on cuts and scrapes — even small ones. Keep them clean!</span>
-      </li>
-      <li>
-        <span class="tip-emoji">🧼</span>
-        <span>Wash your hands after playing outside, especially on farms or near animals.</span>
-      </li>
-      <li>
-        <span class="tip-emoji">👀</span>
-        <span>If you see an animal with a weird smelly wound or acting strange, tell a grown-up right away.</span>
-      </li>
-      <li>
-        <span class="tip-emoji">🐛</span>
-        <span>If you ever see wiggly white maggots in a wound — don't touch them! Get a grown-up immediately.</span>
-      </li>
-      <li>
-        <span class="tip-emoji">🌙</span>
-        <span>Sleep indoors with windows closed or screened — it helps keep flies outside where they belong.</span>
-      </li>
-      <li>
-        <span class="tip-emoji">📞</span>
-        <span>If someone is sick from a bug wound, call a doctor. It's always better to be safe and get help!</span>
-      </li>
+      <li><span class="tip-emoji">🩹</span><span data-en="Always put a bandage on cuts and scrapes — even small ones. Keep them clean!" data-es="Siempre pon una curita en cortes y raspones — incluso los pequeños. ¡Mantenlos limpios!">Always put a bandage on cuts and scrapes — even small ones. Keep them clean!</span></li>
+      <li><span class="tip-emoji">🧼</span><span data-en="Wash your hands after playing outside, especially on farms or near animals." data-es="Lávate las manos después de jugar afuera, especialmente en granjas o cerca de animales.">Wash your hands after playing outside, especially on farms or near animals.</span></li>
+      <li><span class="tip-emoji">👀</span><span data-en="If you see an animal with a weird smelly wound or acting strange, tell a grown-up right away." data-es="Si ves un animal con una herida extraña con mal olor o que actúa raro, dile a un adulto de inmediato.">If you see an animal with a weird smelly wound or acting strange, tell a grown-up right away.</span></li>
+      <li><span class="tip-emoji">🐛</span><span data-en="If you ever see wiggly white maggots in a wound — don't touch them! Get a grown-up immediately." data-es="Si alguna vez ves larvas blancas moviéndose en una herida — ¡no las toques! Busca a un adulto de inmediato.">If you ever see wiggly white maggots in a wound — don't touch them! Get a grown-up immediately.</span></li>
+      <li><span class="tip-emoji">🌙</span><span data-en="Sleep indoors with windows closed or screened — it helps keep flies outside where they belong." data-es="Duerme en interiores con ventanas cerradas o con mosquitero — ayuda a mantener las moscas afuera donde corresponden.">Sleep indoors with windows closed or screened — it helps keep flies outside where they belong.</span></li>
+      <li><span class="tip-emoji">📞</span><span data-en="If someone is sick from a bug wound, call a doctor. It's always better to be safe and get help!" data-es="Si alguien está enfermo por una herida de insecto, llama a un médico. ¡Siempre es mejor estar seguros y buscar ayuda!">If someone is sick from a bug wound, call a doctor. It's always better to be safe and get help!</span></li>
     </ul>
   </div>
 </section>
 
-<!-- ══════════ FAQ ══════════ -->
+<!-- FAQ -->
 <section class="section section-alt" id="faq">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-eyebrow">Common Questions</div>
-      <h2>Frequently Asked Questions</h2>
-      <p class="section-desc">Quick answers to the questions we hear most often.</p>
+      <div class="section-eyebrow" data-en="Common Questions" data-es="Preguntas Frecuentes">Common Questions</div>
+      <h2 data-en="Frequently Asked Questions" data-es="Preguntas Frecuentes">Frequently Asked Questions</h2>
+      <p class="section-desc" data-en="Quick answers to the questions we hear most often." data-es="Respuestas rápidas a las preguntas que más escuchamos.">Quick answers to the questions we hear most often.</p>
     </div>
-
     <div class="faq-list">
+
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          Is screwworm dangerous to my family?
+          <span data-en="Is screwworm dangerous to my family?" data-es="¿Es el gusano barrenador peligroso para mi familia?">Is screwworm dangerous to my family?</span>
           <span class="toggle">+</span>
         </div>
-        <div class="faq-a">Human cases are uncommon, and there have been no locally acquired human cases in the U.S. It mostly affects animals. When it does occur in a person, it is very treatable — the key is seeing a doctor promptly if you notice a wound worsening unexpectedly. Simple wound care (keep cuts clean and covered) keeps your personal risk very low.</div>
+        <div class="faq-a" data-en="Human cases are uncommon, and there have been no locally acquired human cases in the U.S. It mostly affects animals. When it does occur in a person, it is very treatable — the key is seeing a doctor promptly if you notice a wound worsening unexpectedly. Simple wound care (keep cuts clean and covered) keeps your personal risk very low."
+             data-es="Los casos en humanos son poco frecuentes y no ha habido casos adquiridos localmente en los EE. UU. Afecta principalmente a los animales. Cuando ocurre en una persona, es muy tratable — la clave es ver a un médico rápidamente si nota que una herida empeora inesperadamente. El cuidado sencillo de las heridas (mantener los cortes limpios y cubiertos) mantiene su riesgo personal muy bajo.">
+          Human cases are uncommon, and there have been no locally acquired human cases in the U.S. It mostly affects animals. When it does occur in a person, it is very treatable — the key is seeing a doctor promptly if you notice a wound worsening unexpectedly. Simple wound care (keep cuts clean and covered) keeps your personal risk very low.
+        </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          Can screwworm spread from animal to animal — or person to person?
+          <span data-en="Can screwworm spread from animal to animal — or person to person?" data-es="¿Puede el gusano barrenador propagarse de animal a animal, o de persona a persona?">Can screwworm spread from animal to animal — or person to person?</span>
           <span class="toggle">+</span>
         </div>
-        <div class="faq-a">No. Screwworm does not spread directly from animal to animal or person to person like a contagious disease. Each infestation starts fresh when a fly lays eggs on a wound. You can't "catch" it from being near an infested animal or person.</div>
+        <div class="faq-a" data-en="No. Screwworm does not spread directly from animal to animal or person to person like a contagious disease. Each infestation starts fresh when a fly lays eggs on a wound. You can't 'catch' it from being near an infested animal or person."
+             data-es="No. El gusano barrenador no se propaga directamente de animal a animal ni de persona a persona como una enfermedad contagiosa. Cada infestación comienza de nuevo cuando una mosca pone huevos en una herida. No puede 'contagiarse' por estar cerca de un animal o persona infestada.">
+          No. Screwworm does not spread directly from animal to animal or person to person like a contagious disease. Each infestation starts fresh when a fly lays eggs on a wound. You can't "catch" it from being near an infested animal or person.
+        </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          Is the food supply safe? Can I get it from eating meat?
+          <span data-en="Is the food supply safe? Can I get it from eating meat?" data-es="¿Es seguro el suministro de alimentos? ¿Puedo contraerlo al comer carne?">Is the food supply safe? Can I get it from eating meat?</span>
           <span class="toggle">+</span>
         </div>
-        <div class="faq-a">Yes, the food supply is safe. Screwworm does not infest meat, milk, eggs, fruits, or vegetables. The larvae only affect living tissue. Inspected food products remain safe.</div>
+        <div class="faq-a" data-en="Yes, the food supply is safe. Screwworm does not infest meat, milk, eggs, fruits, or vegetables. The larvae only affect living tissue. Inspected food products remain safe."
+             data-es="Sí, el suministro de alimentos es seguro. El gusano barrenador no infesta carne, leche, huevos, frutas ni verduras. Las larvas solo afectan el tejido vivo. Los productos alimenticios inspeccionados permanecen seguros.">
+          Yes, the food supply is safe. Screwworm does not infest meat, milk, eggs, fruits, or vegetables. The larvae only affect living tissue. Inspected food products remain safe.
+        </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          What should I do if I find maggots on my animal?
+          <span data-en="What should I do if I find maggots on my animal?" data-es="¿Qué debo hacer si encuentro larvas en mi animal?">What should I do if I find maggots on my animal?</span>
           <span class="toggle">+</span>
         </div>
-        <div class="faq-a">Stay calm. Keep the animal in place — do not move it out of the area. Do not discard any larvae or maggots. Call your veterinarian and your state animal-health official right away. They will guide you through next steps, including how to collect a sample for laboratory identification.</div>
+        <div class="faq-a" data-en="Stay calm. Keep the animal in place — do not move it out of the area. Do not discard any larvae or maggots. Call your veterinarian and your state animal-health official right away. They will guide you through next steps, including how to collect a sample for laboratory identification."
+             data-es="Mantenga la calma. Mantenga al animal en su lugar — no lo mueva fuera del área. No deseche ninguna larva. Llame a su veterinario y al oficial de salud animal de su estado de inmediato. Le guiarán en los próximos pasos, incluyendo cómo recopilar una muestra para identificación en laboratorio.">
+          Stay calm. Keep the animal in place — do not move it out of the area. Do not discard any larvae or maggots. Call your veterinarian and your state animal-health official right away. They will guide you through next steps, including how to collect a sample for laboratory identification.
+        </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          Should I try to remove maggots from a wound myself?
+          <span data-en="Should I try to remove maggots from a wound myself?" data-es="¿Debo intentar extraer las larvas de una herida yo mismo?">Should I try to remove maggots from a wound myself?</span>
           <span class="toggle">+</span>
         </div>
-        <div class="faq-a">For animals: do not attempt to treat the wound yourself. Contact your vet immediately — they'll use approved products and techniques. For people: do not attempt self-removal. Visit a healthcare provider so this can be done completely and safely. If any larvae come out on their own, place them in a sealed container with rubbing alcohol for your provider to examine.</div>
+        <div class="faq-a" data-en="For animals: do not attempt to treat the wound yourself. Contact your vet immediately — they'll use approved products and techniques. For people: do not attempt self-removal. Visit a healthcare provider so this can be done completely and safely. If any larvae come out on their own, place them in a sealed container with rubbing alcohol for your provider to examine."
+             data-es="Para animales: no intente tratar la herida usted mismo. Contacte a su veterinario de inmediato — usarán productos y técnicas aprobadas. Para personas: no intente la extracción por su cuenta. Visite a un proveedor de salud para que esto se haga de forma completa y segura. Si algunas larvas salen solas, colóquelas en un recipiente sellado con alcohol isopropílico para que su proveedor las examine.">
+          For animals: do not attempt to treat the wound yourself. Contact your vet immediately — they'll use approved products and techniques. For people: do not attempt self-removal. Visit a healthcare provider so this can be done completely and safely. If any larvae come out on their own, place them in a sealed container with rubbing alcohol for your provider to examine.
+        </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          Can my dog or cat get screwworm?
+          <span data-en="Can my dog or cat get screwworm?" data-es="¿Puede mi perro o gato contraer el gusano barrenador?">Can my dog or cat get screwworm?</span>
           <span class="toggle">+</span>
         </div>
-        <div class="faq-a">Yes, though it is not common. If your pet has a non-healing wound with maggots, contact your veterinarian. There are now treatments specifically authorized for dogs and cats, so your vet has good options available.</div>
+        <div class="faq-a" data-en="Yes, though it is not common. If your pet has a non-healing wound with maggots, contact your veterinarian. There are now treatments specifically authorized for dogs and cats, so your vet has good options available."
+             data-es="Sí, aunque no es común. Si su mascota tiene una herida que no cicatriza con larvas, contacte a su veterinario. Ahora existen tratamientos específicamente autorizados para perros y gatos, por lo que su veterinario tiene buenas opciones disponibles.">
+          Yes, though it is not common. If your pet has a non-healing wound with maggots, contact your veterinarian. There are now treatments specifically authorized for dogs and cats, so your vet has good options available.
+        </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          I recently traveled to Mexico or Central America — should I be worried?
+          <span data-en="I recently traveled to Mexico or Central America — should I be worried?" data-es="Viajé recientemente a México o Centroamérica — ¿debo preocuparme?">I recently traveled to Mexico or Central America — should I be worried?</span>
           <span class="toggle">+</span>
         </div>
-        <div class="faq-a">Most travelers are completely fine. Keep any cuts or wounds clean and covered for about two weeks after returning, and see a doctor if a wound starts getting worse instead of better. Mentioning your travel history to the doctor helps them help you quickly.</div>
+        <div class="faq-a" data-en="Most travelers are completely fine. Keep any cuts or wounds clean and covered for about two weeks after returning, and see a doctor if a wound starts getting worse instead of better. Mentioning your travel history to the doctor helps them help you quickly."
+             data-es="La mayoría de los viajeros están completamente bien. Mantenga cualquier corte o herida limpia y cubierta durante aproximadamente dos semanas después de regresar, y consulte a un médico si una herida empeora en lugar de mejorar. Mencionar su historial de viaje al médico les ayuda a atenderle rápidamente.">
+          Most travelers are completely fine. Keep any cuts or wounds clean and covered for about two weeks after returning, and see a doctor if a wound starts getting worse instead of better. Mentioning your travel history to the doctor helps them help you quickly.
+        </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          How do I report a suspected case?
+          <span data-en="How do I report a suspected case?" data-es="¿Cómo reporto un caso sospechoso?">How do I report a suspected case?</span>
           <span class="toggle">+</span>
         </div>
-        <div class="faq-a">For animals: contact your veterinarian and your state animal-health official (in Texas: Texas Animal Health Commission at tahc.texas.gov). For people: contact a healthcare provider. You can also report suspected animal cases directly to USDA APHIS at the reporting link in our Resources section. Reporting is the right thing to do — it protects your neighbors and helps officials respond fast.</div>
+        <div class="faq-a" data-en="For animals: contact your veterinarian and your state animal-health official (in Texas: Texas Animal Health Commission at tahc.texas.gov). For people: contact a healthcare provider. You can also report suspected animal cases directly to USDA APHIS at the reporting link in our Resources section. Reporting is the right thing to do — it protects your neighbors and helps officials respond fast."
+             data-es="Para animales: contacte a su veterinario y al oficial de salud animal de su estado (en Texas: Comisión de Salud Animal de Texas en tahc.texas.gov). Para personas: contacte a un proveedor de atención médica. También puede reportar casos animales sospechosos directamente a USDA APHIS mediante el enlace en nuestra sección de Recursos. Reportar es lo correcto — protege a sus vecinos y ayuda a que las autoridades respondan rápidamente.">
+          For animals: contact your veterinarian and your state animal-health official (in Texas: Texas Animal Health Commission at tahc.texas.gov). For people: contact a healthcare provider. You can also report suspected animal cases directly to USDA APHIS at the reporting link in our Resources section. Reporting is the right thing to do — it protects your neighbors and helps officials respond fast.
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ══════════ RESOURCES ══════════ -->
+<!-- RESOURCES -->
 <section class="section" id="resources">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-eyebrow">Official Resources</div>
-      <h2>Trusted Links & Downloads</h2>
-      <p class="section-desc">Go straight to the source. These are the official resources from federal and state agencies, health organizations, and research institutions.</p>
+      <div class="section-eyebrow" data-en="Official Resources" data-es="Recursos Oficiales">Official Resources</div>
+      <h2 data-en="Trusted Links &amp; Downloads" data-es="Enlaces y Descargas de Confianza">Trusted Links &amp; Downloads</h2>
+      <p class="section-desc" data-en="Go straight to the source. These are the official resources from federal and state agencies, health organizations, and research institutions."
+         data-es="Vaya directo a la fuente. Estos son los recursos oficiales de agencias federales y estatales, organizaciones de salud e instituciones de investigación.">
+        Go straight to the source. These are the official resources from federal and state agencies, health organizations, and research institutions.
+      </p>
     </div>
-
     <div class="resources-grid">
       <a href="https://www.aphis.usda.gov/livestock-poultry-disease/cattle/ticks/screwworm/new-world-screwworm" target="_blank" class="resource-card">
         <div class="resource-tag tag-usda">USDA APHIS</div>
-        <h4>USDA APHIS — New World Screwworm Hub</h4>
-        <p>Main federal resource for animal cases, confirmed detections, press releases, and response updates.</p>
-        <div class="resource-arrow">Visit site →</div>
+        <h4 data-en="USDA APHIS — New World Screwworm Hub" data-es="USDA APHIS — Centro de GBN">USDA APHIS — New World Screwworm Hub</h4>
+        <p data-en="Main federal resource for animal cases, confirmed detections, press releases, and response updates." data-es="Recurso federal principal para casos animales, detecciones confirmadas, comunicados de prensa y actualizaciones de respuesta.">Main federal resource for animal cases, confirmed detections, press releases, and response updates.</p>
+        <div class="resource-arrow" data-en="Visit site →" data-es="Visitar sitio →">Visit site →</div>
       </a>
       <a href="https://www.aphis.usda.gov/animals/animal-health/livestock-and-poultry-disease/stop-screwworm/report-suspected-cases-screwworm" target="_blank" class="resource-card">
         <div class="resource-tag tag-usda">USDA APHIS</div>
-        <h4>Report a Suspected Case (USDA)</h4>
-        <p>Official USDA APHIS reporting portal for suspected animal cases of New World Screwworm.</p>
-        <div class="resource-arrow">Report now →</div>
+        <h4 data-en="Report a Suspected Case (USDA)" data-es="Reportar un Caso Sospechoso (USDA)">Report a Suspected Case (USDA)</h4>
+        <p data-en="Official USDA APHIS reporting portal for suspected animal cases of New World Screwworm." data-es="Portal oficial de reporte de USDA APHIS para casos animales sospechosos de Gusano Barrenador del Nuevo Mundo.">Official USDA APHIS reporting portal for suspected animal cases of New World Screwworm.</p>
+        <div class="resource-arrow" data-en="Report now →" data-es="Reportar ahora →">Report now →</div>
       </a>
       <a href="https://www.cdc.gov/new-world-screwworm" target="_blank" class="resource-card">
         <div class="resource-tag tag-cdc">CDC</div>
-        <h4>CDC — New World Screwworm</h4>
-        <p>Human health information from the Centers for Disease Control and Prevention — symptoms, prevention, and what to do.</p>
-        <div class="resource-arrow">Visit site →</div>
+        <h4 data-en="CDC — New World Screwworm" data-es="CDC — Gusano Barrenador del Nuevo Mundo">CDC — New World Screwworm</h4>
+        <p data-en="Human health information from the Centers for Disease Control and Prevention — symptoms, prevention, and what to do." data-es="Información de salud humana de los Centros para el Control y la Prevención de Enfermedades — síntomas, prevención y qué hacer.">Human health information from the Centers for Disease Control and Prevention — symptoms, prevention, and what to do.</p>
+        <div class="resource-arrow" data-en="Visit site →" data-es="Visitar sitio →">Visit site →</div>
       </a>
       <a href="https://www.tahc.texas.gov/emergency/nws.html" target="_blank" class="resource-card">
         <div class="resource-tag tag-state">Texas</div>
-        <h4>Texas Animal Health Commission (TAHC)</h4>
-        <p>Texas-specific updates, quarantine zones, and emergency response information for livestock producers in Texas.</p>
-        <div class="resource-arrow">Visit site →</div>
+        <h4 data-en="Texas Animal Health Commission (TAHC)" data-es="Comisión de Salud Animal de Texas (TAHC)">Texas Animal Health Commission (TAHC)</h4>
+        <p data-en="Texas-specific updates, quarantine zones, and emergency response information for livestock producers in Texas." data-es="Actualizaciones específicas de Texas, zonas de cuarentena e información de respuesta de emergencia para productores ganaderos en Texas.">Texas-specific updates, quarantine zones, and emergency response information for livestock producers in Texas.</p>
+        <div class="resource-arrow" data-en="Visit site →" data-es="Visitar sitio →">Visit site →</div>
       </a>
       <a href="https://tahc.maps.arcgis.com/apps/instant/basic/index.html?appid=fc8902674b004a778f44e3fe219c255f" target="_blank" class="resource-card">
         <div class="resource-tag tag-state">Texas</div>
-        <h4>TAHC Live Quarantine Zone Map</h4>
-        <p>Interactive map showing the current infested and quarantine zones in Texas — updated as the situation changes.</p>
-        <div class="resource-arrow">Open map →</div>
+        <h4 data-en="TAHC Live Quarantine Zone Map" data-es="Mapa en Vivo de Zona de Cuarentena TAHC">TAHC Live Quarantine Zone Map</h4>
+        <p data-en="Interactive map showing the current infested and quarantine zones in Texas — updated as the situation changes." data-es="Mapa interactivo que muestra las zonas de infestación y cuarentena actuales en Texas — actualizado conforme cambia la situación.">Interactive map showing the current infested and quarantine zones in Texas — updated as the situation changes.</p>
+        <div class="resource-arrow" data-en="Open map →" data-es="Abrir mapa →">Open map →</div>
       </a>
       <a href="https://www.aphis.usda.gov/sites/default/files/factsheet-nws-hunters-508.pdf" target="_blank" class="resource-card">
         <div class="resource-tag tag-usda">USDA — PDF</div>
-        <h4>Fact Sheet for Hunters</h4>
-        <p>Downloadable PDF guide specifically for hunters who may encounter wildlife in affected areas. Learn what to look for.</p>
-        <div class="resource-arrow">Download PDF →</div>
+        <h4 data-en="Fact Sheet for Hunters" data-es="Hoja Informativa para Cazadores">Fact Sheet for Hunters</h4>
+        <p data-en="Downloadable PDF guide specifically for hunters who may encounter wildlife in affected areas. Learn what to look for." data-es="Guía PDF descargable específicamente para cazadores que pueden encontrar fauna silvestre en áreas afectadas. Aprenda qué buscar.">Downloadable PDF guide specifically for hunters who may encounter wildlife in affected areas. Learn what to look for.</p>
+        <div class="resource-arrow" data-en="Download PDF →" data-es="Descargar PDF →">Download PDF →</div>
       </a>
       <a href="https://www.ncfh.org/wp-content/uploads/2026/02/NCFH_NWS_FarmworkerHealth_EducationResource_2026.pdf" target="_blank" class="resource-card">
         <div class="resource-tag tag-health">NCFH</div>
-        <h4>NCFH — Farmworker Health Education Resource</h4>
-        <p>Resources for agricultural workers and livestock producers from the National Center for Farmworker Health (English).</p>
-        <div class="resource-arrow">Download PDF →</div>
+        <h4 data-en="NCFH — Farmworker Health Education Resource" data-es="NCFH — Recurso Educativo de Salud para Trabajadores Agrícolas">NCFH — Farmworker Health Education Resource</h4>
+        <p data-en="Resources for agricultural workers and livestock producers from the National Center for Farmworker Health (English)." data-es="Recursos para trabajadores agrícolas y productores ganaderos del Centro Nacional de Salud para Trabajadores Agrícolas (inglés).">Resources for agricultural workers and livestock producers from the National Center for Farmworker Health (English).</p>
+        <div class="resource-arrow" data-en="Download PDF →" data-es="Descargar PDF →">Download PDF →</div>
       </a>
       <a href="https://www.youtube.com/watch?v=-3jlHRQsUWQ" target="_blank" class="resource-card">
         <div class="resource-tag tag-video">Video</div>
-        <h4>New World Screwworm Identification (YouTube)</h4>
-        <p>Official USDA video on how to identify New World Screwworm larvae — a helpful visual guide for producers and vets.</p>
-        <div class="resource-arrow">Watch video →</div>
+        <h4 data-en="New World Screwworm Identification (YouTube)" data-es="Identificación del Gusano Barrenador (YouTube)">New World Screwworm Identification (YouTube)</h4>
+        <p data-en="Official USDA video on how to identify New World Screwworm larvae — a helpful visual guide for producers and vets." data-es="Video oficial de USDA sobre cómo identificar las larvas del Gusano Barrenador del Nuevo Mundo — una útil guía visual para productores y veterinarios.">Official USDA video on how to identify New World Screwworm larvae — a helpful visual guide for producers and vets.</p>
+        <div class="resource-arrow" data-en="Watch video →" data-es="Ver video →">Watch video →</div>
       </a>
       <a href="https://www.youtube.com/watch?v=OgCdoGCEV-0" target="_blank" class="resource-card">
         <div class="resource-tag tag-video">Video</div>
-        <h4>Screwworm Information Overview (YouTube)</h4>
-        <p>Additional educational video providing an overview of screwworm — what it is, the history, and why it matters now.</p>
-        <div class="resource-arrow">Watch video →</div>
+        <h4 data-en="Screwworm Information Overview (YouTube)" data-es="Visión General del Gusano Barrenador (YouTube)">Screwworm Information Overview (YouTube)</h4>
+        <p data-en="Additional educational video providing an overview of screwworm — what it is, the history, and why it matters now." data-es="Video educativo adicional que proporciona una visión general del gusano barrenador — qué es, la historia y por qué importa ahora.">Additional educational video providing an overview of screwworm — what it is, the history, and why it matters now.</p>
+        <div class="resource-arrow" data-en="Watch video →" data-es="Ver video →">Watch video →</div>
       </a>
-      <!-- Spanish Resources -->
       <a href="https://www.aphis.usda.gov/sites/default/files/bro-new-world-screwworm-sp.pdf" target="_blank" class="resource-card">
         <div class="resource-tag tag-spanish">En Español — PDF</div>
-        <h4>Gusano Barrenador: Lo Que Necesita Saber (USDA)</h4>
-        <p>Folleto oficial de USDA APHIS en español sobre el gusano barrenador del Nuevo Mundo.</p>
-        <div class="resource-arrow">Descargar PDF →</div>
+        <h4 data-en="Screwworm Fact Sheet — Spanish (USDA)" data-es="Gusano Barrenador: Lo Que Necesita Saber (USDA)">Gusano Barrenador: Lo Que Necesita Saber (USDA)</h4>
+        <p data-en="Official USDA APHIS fact sheet on New World Screwworm in Spanish." data-es="Folleto oficial de USDA APHIS en español sobre el gusano barrenador del Nuevo Mundo.">Official USDA APHIS fact sheet on New World Screwworm in Spanish.</p>
+        <div class="resource-arrow" data-en="Download PDF →" data-es="Descargar PDF →">Download PDF →</div>
       </a>
       <a href="https://www.cdc.gov/new-world-screwworm/es/about/index.html" target="_blank" class="resource-card">
         <div class="resource-tag tag-spanish">En Español — CDC</div>
-        <h4>CDC — Acerca del Gusano Barrenador (En Español)</h4>
-        <p>Información de los CDC sobre el gusano barrenador del Nuevo Mundo en español, incluyendo síntomas y prevención.</p>
-        <div class="resource-arrow">Visitar sitio →</div>
+        <h4 data-en="CDC — Screwworm Info in Spanish" data-es="CDC — Acerca del Gusano Barrenador (En Español)">CDC — Acerca del Gusano Barrenador (En Español)</h4>
+        <p data-en="CDC information on New World Screwworm in Spanish, including symptoms and prevention." data-es="Información de los CDC sobre el gusano barrenador del Nuevo Mundo en español, incluyendo síntomas y prevención.">CDC information on New World Screwworm in Spanish, including symptoms and prevention.</p>
+        <div class="resource-arrow" data-en="Visit site →" data-es="Visitar sitio →">Visit site →</div>
       </a>
       <a href="https://www.dshs.texas.gov/es/news-alerts/concientizacion-sobre-el-gusano-barrenador-del-nuevo-mundo" target="_blank" class="resource-card">
         <div class="resource-tag tag-spanish">En Español — Texas</div>
-        <h4>DSHS Texas — Concientización (En Español)</h4>
-        <p>Información del Departamento de Servicios de Salud de Texas sobre el gusano barrenador del nuevo mundo.</p>
-        <div class="resource-arrow">Visitar sitio →</div>
+        <h4 data-en="DSHS Texas — Screwworm Awareness (Spanish)" data-es="DSHS Texas — Concientización (En Español)">DSHS Texas — Concientización (En Español)</h4>
+        <p data-en="Texas Department of State Health Services information on screwworm in Spanish." data-es="Información del Departamento de Servicios de Salud de Texas sobre el gusano barrenador del nuevo mundo.">Texas Department of State Health Services information on screwworm in Spanish.</p>
+        <div class="resource-arrow" data-en="Visit site →" data-es="Visitar sitio →">Visit site →</div>
       </a>
     </div>
-
-    <!-- NCFH helpline callout -->
     <div class="callout" style="margin-top:36px;">
-      📞 <strong>Need to find a healthcare provider?</strong> Call the NCFH Call for Health Helpline: <strong>1 (800) 377-9968</strong> or via WhatsApp at <strong>1 (737) 999-4162</strong>. Confidential, available in English and Spanish. <em>¿Necesita un proveedor de atención médica? Llame gratuitamente al mismo número.</em>
+      📞 <strong data-en="Need to find a healthcare provider?" data-es="¿Necesita encontrar un proveedor de atención médica?">Need to find a healthcare provider?</strong>
+      <span data-en="Call the NCFH Call for Health Helpline:" data-es="Llame a la Línea de Ayuda Una Voz para la Salud de NCFH:">Call the NCFH Call for Health Helpline:</span>
+      <strong>1 (800) 377-9968</strong>
+      <span data-en="or via WhatsApp at" data-es="o por WhatsApp al">or via WhatsApp at</span>
+      <strong>1 (737) 999-4162</strong>.
+      <em data-en="Confidential, available in English and Spanish." data-es="Confidencial, disponible en inglés y español.">Confidential, available in English and Spanish.</em>
     </div>
   </div>
 </section>
 
-<!-- ══════════ AI CHAT AGENT ══════════ -->
-<section class="chat-section" id="ask">
-  <div class="chat-inner">
-    <div class="chat-header">
-      <div class="section-eyebrow">Ask a Question</div>
-      <h2>Get Quick Answers with Our AI Assistant</h2>
-      <p>Have a specific question about screwworm? Our AI assistant is trained on trusted information from USDA, CDC, and health agencies. Ask away — in English or Spanish.</p>
-    </div>
-    <div class="chat-container">
-      <script src='https://cdn.jotfor.ms/agent/embedjs/019ea8fd001c7831800c915311ed531e97cb/embed.js'></script>
-    </div>
-  </div>
-</section>
 
-<!-- ══════════ FOOTER ══════════ -->
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
       <div class="brand">🪲 ScrewwormInfo</div>
-      <p>Public information resource for the<br>New World Screwworm situation.</p>
+      <p data-en="Public information resource for the<br>New World Screwworm situation." data-es="Recurso de información pública sobre<br>la situación del Gusano Barrenador.">Public information resource for the<br>New World Screwworm situation.</p>
     </div>
     <div class="footer-links">
-      <strong style="color:#fff;font-size:0.85rem;margin-bottom:4px;">Quick Links</strong>
-      <a href="#basics">What Is It?</a>
-      <a href="#symptoms">Symptoms</a>
-      <a href="#prevention">Prevention</a>
-      <a href="#livestock">For Livestock Producers</a>
-      <a href="#kids">Kids Corner</a>
-      <a href="#resources">Resources</a>
+      <strong style="color:#fff;font-size:0.85rem;margin-bottom:4px;" data-en="Quick Links" data-es="Enlaces Rápidos">Quick Links</strong>
+      <a href="#basics"     data-en="What Is It?"             data-es="¿Qué Es?">What Is It?</a>
+      <a href="#symptoms"   data-en="Symptoms"                data-es="Síntomas">Symptoms</a>
+      <a href="#prevention" data-en="Prevention"              data-es="Prevención">Prevention</a>
+      <a href="#livestock"  data-en="For Livestock Producers" data-es="Para Ganaderos">For Livestock Producers</a>
+      <a href="#kids"       data-en="Kids Corner"             data-es="Rincón Infantil">Kids Corner</a>
+      <a href="#resources"  data-en="Resources"               data-es="Recursos">Resources</a>
     </div>
     <div class="footer-links">
-      <strong style="color:#fff;font-size:0.85rem;margin-bottom:4px;">Official Sources</strong>
+      <strong style="color:#fff;font-size:0.85rem;margin-bottom:4px;" data-en="Official Sources" data-es="Fuentes Oficiales">Official Sources</strong>
       <a href="https://www.aphis.usda.gov" target="_blank">USDA APHIS</a>
       <a href="https://www.cdc.gov/new-world-screwworm" target="_blank">CDC</a>
       <a href="https://www.tahc.texas.gov/emergency/nws.html" target="_blank">Texas TAHC</a>
       <a href="https://www.ncfh.org" target="_blank">NCFH Helpline</a>
     </div>
     <div>
-      <strong style="color:#fff;font-size:0.85rem;">Emergency Contacts</strong>
-      <p style="margin-top:6px;">Report animal cases:<br><a href="https://www.aphis.usda.gov" target="_blank">USDA APHIS</a></p>
-      <p style="margin-top:8px;">NCFH Health Helpline:<br><strong style="color:#fff;">1 (800) 377-9968</strong></p>
+      <strong style="color:#fff;font-size:0.85rem;" data-en="Emergency Contacts" data-es="Contactos de Emergencia">Emergency Contacts</strong>
+      <p style="margin-top:6px;" data-en="Report animal cases:" data-es="Reportar casos en animales:">Report animal cases:<br><a href="https://www.aphis.usda.gov" target="_blank">USDA APHIS</a></p>
+      <p style="margin-top:8px;" data-en="NCFH Health Helpline:" data-es="Línea de Salud NCFH:">NCFH Health Helpline:<br><strong style="color:#fff;">1 (800) 377-9968</strong></p>
     </div>
   </div>
-  <div class="disclaimer">
+  <div class="disclaimer"
+       data-en="This site is an informational resource compiled from official government and public health sources including USDA APHIS, CDC, Texas TAHC, and NCFH. It is intended for general public education only and does not constitute medical or veterinary advice. Always consult a licensed healthcare or veterinary professional for diagnosis and treatment. Information is current as of June 2026 — please verify against live official sources as the situation evolves."
+       data-es="Este sitio es un recurso informativo compilado de fuentes gubernamentales y de salud pública oficiales, incluidos USDA APHIS, CDC, Texas TAHC y NCFH. Está destinado únicamente a la educación del público en general y no constituye asesoramiento médico ni veterinario. Siempre consulte a un profesional de salud o veterinario con licencia para diagnóstico y tratamiento. La información está actualizada a junio de 2026 — verifique con fuentes oficiales vigentes conforme la situación evolucione.">
     This site is an informational resource compiled from official government and public health sources including USDA APHIS, CDC, Texas TAHC, and NCFH. It is intended for general public education only and does not constitute medical or veterinary advice. Always consult a licensed healthcare or veterinary professional for diagnosis and treatment. Information is current as of June 2026 — please verify against live official sources as the situation evolves.
   </div>
 </footer>
 
 <script>
+  // ── Language System ──
+  let currentLang = 'en';
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'es' : 'en';
+    applyLang(currentLang);
+  }
+
+  function applyLang(lang) {
+    // Update toggle UI
+    document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+    document.getElementById('btnES').classList.toggle('active', lang === 'es');
+    document.documentElement.lang = lang;
+
+    // Swap all data-en / data-es elements
+    document.querySelectorAll('[data-en][data-es]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (!val) return;
+
+      // For elements that contain child elements we don't want to clobber
+      // (like <strong> inside .callout), we store their full HTML.
+      // We use innerHTML for headings/paragraphs that may include <em>/<strong>/<br>.
+      // For plain text containers (spans, li, a) use textContent to be safe,
+      // but allow innerHTML when the translated string contains tags.
+      if (/<[a-z]/i.test(val)) {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    });
+
+    // Special: hero h1 always uses innerHTML (has <br> and <em>)
+    const h1 = document.querySelector('.hero h1');
+    if (h1) {
+      const val = h1.getAttribute('data-' + lang);
+      if (val) h1.innerHTML = val;
+    }
+
+    // Special: disclaimer div
+    const disc = document.querySelector('.disclaimer');
+    if (disc) {
+      const val = disc.getAttribute('data-' + lang);
+      if (val) disc.textContent = val;
+    }
+
+    // Special: footer "report animal cases" paragraph
+    document.querySelectorAll('footer p[data-en]').forEach(p => {
+      const val = p.getAttribute('data-' + lang);
+      if (val) {
+        // preserve inner <br> and <a>
+        const link = p.querySelector('a');
+        p.textContent = val;
+        if (link) {
+          p.appendChild(document.createElement('br'));
+          p.appendChild(link);
+        }
+      }
+    });
+
+    // FAQ answers — swap text preserving any inner markup already handled by data-en/es on the div itself
+    document.querySelectorAll('.faq-a[data-en][data-es]').forEach(el => {
+      el.textContent = el.getAttribute('data-' + lang);
+    });
+  }
+
+  // ── FAQ Accordion ──
   function toggleFaq(el) {
     const item = el.closest('.faq-item');
     const isOpen = item.classList.contains('open');
-    // Close all
     document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    // Open clicked if it was closed
     if (!isOpen) item.classList.add('open');
   }
 </script>
